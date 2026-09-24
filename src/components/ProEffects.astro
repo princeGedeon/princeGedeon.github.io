@@ -1,0 +1,124 @@
+---
+/* Experimental visual effects, active only when <html data-pro> is set (?pro=1 / ?pro=2). */
+---
+
+<canvas id="pro-net" aria-hidden="true"></canvas>
+
+<script>
+  const root = document.documentElement;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (root.dataset.pro) {
+    // Typewriter for [data-typewriter] elements.
+    document.querySelectorAll<HTMLElement>('[data-typewriter]').forEach((el) => {
+      const phrases = (el.dataset.typewriter ?? '').split('|').filter(Boolean);
+      const out = el.querySelector<HTMLElement>('[data-typed]');
+      if (!out || !phrases.length) return;
+      if (reduced) {
+        out.textContent = phrases[0];
+        return;
+      }
+      let i = 0;
+      let n = 0;
+      let del = false;
+      const tick = () => {
+        const s = phrases[i];
+        n += del ? -1 : 1;
+        out.textContent = s.slice(0, n);
+        let wait = del ? 30 : 60;
+        if (!del && n === s.length) {
+          del = true;
+          wait = 1800;
+        } else if (del && n === 0) {
+          del = false;
+          i = (i + 1) % phrases.length;
+          wait = 400;
+        }
+        setTimeout(tick, wait);
+      };
+      tick();
+    });
+
+    // Reveal-on-scroll.
+    if (!reduced && 'IntersectionObserver' in window) {
+      const targets = document.querySelectorAll<HTMLElement>('main section, main article');
+      const io = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('pro-in');
+              io.unobserve(e.target);
+            }
+          }),
+        { threshold: 0.08 },
+      );
+      targets.forEach((t) => {
+        t.classList.add('pro-reveal');
+        io.observe(t);
+      });
+    }
+
+    // Faint animated neural network behind the page.
+    const canvas = document.getElementById('pro-net') as HTMLCanvasElement | null;
+    const ctx = canvas?.getContext('2d');
+    if (canvas && ctx) {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      type Node = { x: number; y: number; vx: number; vy: number };
+      let nodes: Node[] = [];
+      let w = 0;
+      let h = 0;
+      const resize = () => {
+        w = canvas.clientWidth;
+        h = canvas.clientHeight;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const count = Math.round(Math.min(70, (w * h) / 22000));
+        nodes = Array.from({ length: count }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+        }));
+      };
+      const color = () => getComputedStyle(root).getPropertyValue('--pro-net').trim() || '120,120,160';
+      const draw = () => {
+        const c = color();
+        ctx.clearRect(0, 0, w, h);
+        for (const n of nodes) {
+          if (!reduced) {
+            n.x += n.vx;
+            n.y += n.vy;
+            if (n.x < 0 || n.x > w) n.vx *= -1;
+            if (n.y < 0 || n.y > h) n.vy *= -1;
+          }
+        }
+        for (let a = 0; a < nodes.length; a++) {
+          for (let b = a + 1; b < nodes.length; b++) {
+            const dx = nodes[a].x - nodes[b].x;
+            const dy = nodes[a].y - nodes[b].y;
+            const d = Math.hypot(dx, dy);
+            if (d < 140) {
+              ctx.strokeStyle = `rgba(${c},${(1 - d / 140) * 0.35})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(nodes[a].x, nodes[a].y);
+              ctx.lineTo(nodes[b].x, nodes[b].y);
+              ctx.stroke();
+            }
+          }
+        }
+        ctx.fillStyle = `rgba(${c},0.6)`;
+        for (const n of nodes) {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        if (!reduced) requestAnimationFrame(draw);
+      };
+      resize();
+      addEventListener('resize', resize);
+      draw();
+    }
+  }
+</script>

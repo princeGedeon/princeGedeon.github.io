@@ -57,6 +57,13 @@ const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
     </div>
   </section>
 
+  {
+    profile.pro.terminal[lang] && (
+      <p class="pro-only pro-terminal" data-typewriter={profile.pro.terminal[lang]} aria-hidden="true">
+        <span data-typed />
+      </p>
+    )
+  }
   <section class="prose-tight mt-6">
     {profile.bio[lang].map((para) => <p set:html={para} />)}
     <ul class="mt-4 flex flex-wrap gap-1.5" aria-label={t('home.interests')}>

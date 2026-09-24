@@ -1,8 +1,10 @@
 ---
 import '../styles/global.css';
+import '../styles/pro.css';
 
 import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
+import ProEffects from '../components/ProEffects.astro';
 import Sidebar from '../components/Sidebar.astro';
 import { profile } from '../data';
 import { defaultLang, type Lang, languages } from '../i18n/ui';
@@ -95,6 +97,12 @@ const jsonLd = {
         // Light by default; dark only when the visitor picked it.
         const s = localStorage.getItem('theme');
         document.documentElement.dataset.theme = s === 'dark' ? 'dark' : 'light';
+        // Experimental looks: ?pro=1 (AI / dev), ?pro=2 (afro design), ?pro=0 resets.
+        const p = new URLSearchParams(location.search).get('pro');
+        if (p === '1' || p === '2') sessionStorage.setItem('pro', p);
+        if (p === '0') sessionStorage.removeItem('pro');
+        const pro = sessionStorage.getItem('pro');
+        if (pro) document.documentElement.dataset.pro = pro;
       })();
     </script>
     {
@@ -137,5 +145,6 @@ const jsonLd = {
       </main>
     </div>
     <Footer lang={lang} />
+    <ProEffects />
   </body>
 </html>

@@ -1,0 +1,250 @@
+/* Experimental looks — only when <html data-pro="1|2"> (?pro=1 / ?pro=2, ?pro=0 resets).
+   Unlayered on purpose so it overrides Tailwind utilities. Delete this file + ProEffects.astro to remove. */
+
+@property --pro-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.pro-only,
+#pro-net {
+  display: none;
+}
+
+/* ───────────── Shared by pro=1 and pro=2 ───────────── */
+html[data-pro] {
+  --pro-a: #f3a918;
+  --pro-b: #4f46e5;
+  --pro-side: #f1f3f6;
+  --pro-side-text: #1f2937;
+  --pro-net: 79, 70, 229;
+}
+html[data-pro][data-theme='dark'] {
+  --pro-side: #1b1a18;
+  --pro-side-text: #e4e1db;
+  --pro-net: 243, 169, 24;
+}
+
+html[data-pro] .pro-only {
+  display: block;
+}
+html[data-pro] #pro-net {
+  display: block;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+}
+html[data-pro] body {
+  background: transparent;
+}
+html[data-pro]:not([data-theme='dark']) {
+  background: #ffffff;
+}
+html[data-pro][data-theme='dark'] {
+  background: #121110;
+}
+
+/* Sidebar becomes a floating card with a darker tint, readable text. */
+html[data-pro] aside {
+  align-self: start;
+  position: sticky;
+  top: 1.5rem;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: var(--pro-side);
+  color: var(--pro-side-text);
+  border: 1px solid rgb(0 0 0 / 0.05);
+  box-shadow: 0 8px 30px -18px rgb(15 23 42 / 0.35);
+}
+
+/* Animated gradient ring around photos. */
+html[data-pro] aside img,
+html[data-pro] main img.rounded-full {
+  border: 3px solid transparent !important;
+  background:
+    linear-gradient(var(--pro-side), var(--pro-side)) padding-box,
+    conic-gradient(from var(--pro-angle), var(--pro-a), var(--pro-b), var(--pro-a)) border-box;
+  animation: pro-spin 6s linear infinite;
+}
+@keyframes pro-spin {
+  to {
+    --pro-angle: 360deg;
+  }
+}
+
+/* Code-style section markers + gradient underline. */
+html[data-pro] .section-title {
+  text-transform: lowercase;
+}
+html[data-pro] .section-title::before {
+  content: '// ';
+  font-family: var(--font-mono);
+  color: var(--pro-b);
+  opacity: 0.8;
+}
+html[data-pro] .section-title::after {
+  width: 3.5rem;
+  background: linear-gradient(90deg, var(--pro-a), var(--pro-b));
+}
+
+/* Terminal line. */
+html[data-pro] .pro-terminal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+html[data-pro] .pro-terminal::before {
+  content: '>';
+  color: var(--pro-a);
+}
+html[data-pro] .pro-terminal [data-typed]::after {
+  content: '▋';
+  margin-left: 2px;
+  color: var(--pro-a);
+  animation: pro-blink 1s steps(1) infinite;
+}
+@keyframes pro-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Tags and badges glow a little. */
+html[data-pro] .tag {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--pro-b) 35%, transparent);
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s;
+}
+html[data-pro] .tag:hover,
+html[data-pro] .badge:hover {
+  border-color: var(--pro-b);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pro-b) 15%, transparent);
+}
+
+/* Animated link underline. */
+html[data-pro] main a:not(.badge):not(.tag) {
+  text-decoration: none;
+  background: linear-gradient(90deg, var(--pro-a), var(--pro-b)) left bottom / 0 1.5px no-repeat;
+  transition: background-size 0.25s;
+}
+html[data-pro] main a:not(.badge):not(.tag):hover {
+  background-size: 100% 1.5px;
+}
+
+/* Cards lift on hover. */
+html[data-pro] main article,
+html[data-pro] main ol > li {
+  border-radius: 0.75rem;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+html[data-pro] main article:hover,
+html[data-pro] main ol > li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -20px rgb(15 23 42 / 0.45);
+}
+
+/* Reveal on scroll (classes added by ProEffects). */
+html[data-pro] .pro-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+html[data-pro] .pro-reveal.pro-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Active nav link with gradient. */
+html[data-pro] nav a[aria-current='page'] {
+  text-decoration: none;
+  background: linear-gradient(90deg, var(--pro-a), var(--pro-b)) left bottom / 100% 2px no-repeat;
+}
+
+/* ───────────── pro=2 — afro design ───────────── */
+html[data-pro='2'] {
+  --pro-a: #f3a918; /* gold */
+  --pro-b: #b45309; /* terracotta */
+  --pro-c: #166534; /* forest green */
+  --pro-side: #f7efe2;
+  --pro-side-text: #2b2118;
+  --pro-net: 180, 83, 9;
+}
+html[data-pro='2']:not([data-theme='dark']) {
+  background: #fdfaf4;
+}
+html[data-pro='2'][data-theme='dark'] {
+  --pro-side: #1f1a14;
+  --pro-side-text: #efe6d6;
+}
+
+/* Kente band on top of the header. */
+html[data-pro='2'] body > header {
+  position: relative;
+  padding-top: 5px;
+}
+html[data-pro='2'] body > header::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: repeating-linear-gradient(
+    90deg,
+    #f3a918 0 28px,
+    #166534 28px 40px,
+    #b45309 40px 56px,
+    #1c1917 56px 62px
+  );
+}
+/* Faint mud-cloth (bogolan) pattern inside the sidebar card. */
+html[data-pro='2'] aside {
+  background-color: var(--pro-side);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='none' stroke='%23b45309' stroke-opacity='.06' stroke-width='1.5'%3E%3Cpath d='M0 10h40M0 30h40'/%3E%3Cpath d='M5 20l5-5 5 5 5-5 5 5 5-5 5 5 5-5'/%3E%3Ccircle cx='20' cy='10' r='2' fill='%23b45309' fill-opacity='.06'/%3E%3Ccircle cx='20' cy='30' r='2' fill='%23b45309' fill-opacity='.06'/%3E%3C/svg%3E");
+  border-color: rgb(180 83 9 / 0.15);
+}
+html[data-pro='2'] .section-title::before {
+  content: '◆ ';
+  font-family: inherit;
+  color: var(--pro-b);
+}
+html[data-pro='2'] .section-title {
+  text-transform: none;
+}
+html[data-pro='2'] .section-title::after {
+  width: 4.5rem;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pro-a) 0 12px,
+    var(--pro-c) 12px 18px,
+    var(--pro-b) 18px 26px
+  );
+}
+html[data-pro='2'] .tag {
+  background: #f7efe2;
+  border-color: rgb(180 83 9 / 0.3);
+}
+html[data-pro='2'][data-theme='dark'] .tag {
+  background: #241e17;
+}
+html[data-pro='2'] .pro-terminal {
+  background: #2b2118;
+  color: #f7efe2;
+}

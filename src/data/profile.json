@@ -338,5 +338,11 @@
       "IFRI, Université d'Abomey-Calavi"
     ]
   },
-  "homeLayout": "sidebar"
+  "homeLayout": "sidebar",
+  "pro": {
+    "terminal": {
+      "en": "training agents… multi-agent RL · safe RL · robotics|coordinating UAV swarms under constraints|seeking a PhD — early 2027",
+      "fr": "entraînement des agents… RL multi-agents · RL sûr · robotique|coordination d’essaims de drones sous contraintes|recherche un doctorat — début 2027"
+    }
+  }
 }

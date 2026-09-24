@@ -61,6 +61,8 @@ const profileSchema = z.object({
   references: L,
   /** Show the References section on the CV page. */
   showReferences: z.boolean().default(false),
+  /** Experimental ?pro=1 / ?pro=2 looks: phrases for the typewriter line, separated by "|". */
+  pro: z.object({ terminal: L }).default({ terminal: { en: '', fr: '' } }),
   /** Home layout: 'sidebar' (classic, photo on the side) or 'hero' (large photo on top). Preview the other with ?dev=1. */
   homeLayout: z.enum(['sidebar', 'hero']).default('sidebar'),
   seo: z
