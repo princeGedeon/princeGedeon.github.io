@@ -80,13 +80,11 @@
     "en": [
       "I recently completed an international <strong>Research Master’s (M2) in Artificial Intelligence & Optimization</strong>, fully taught in English, at <strong>Université Clermont Auvergne</strong>, France, supported by the <strong>MIAI Excellence Scholarship</strong>.",
       "My research experience focuses on <strong>reinforcement learning for autonomous and multi-agent systems</strong>. My Master’s thesis focused on <strong>safe multi-agent reinforcement learning for cooperative UAV and ground-robot systems in 3D urban mapping</strong>. I also worked as an <strong>ML R&D intern at bioMérieux</strong>, developing multimodal document-parsing pipelines for clinical microbiology.",
-      "I am particularly interested in <strong>multi-agent reinforcement learning, safe reinforcement learning, autonomous robotics, computer vision, and adaptive decision-making</strong>, with a focus on learning-based autonomous systems that can coordinate and adapt in complex environments.",
       "I am currently <strong>seeking a PhD position</strong> in these areas."
     ],
     "fr": [
       "Je viens de terminer un <strong>Master Recherche international (M2) en Intelligence Artificielle & Optimisation</strong>, entièrement enseigné en anglais, à l’<strong>Université Clermont Auvergne</strong>, avec le soutien de la <strong>bourse d’excellence MIAI</strong>.",
       "Mon expérience de recherche porte sur l’<strong>apprentissage par renforcement pour les systèmes autonomes et multi-agents</strong>. Mon mémoire de Master portait sur l’<strong>apprentissage par renforcement multi-agents sûr pour des systèmes coopératifs drones / robots terrestres en cartographie urbaine 3D</strong>. J’ai également été <strong>stagiaire R&D en ML chez bioMérieux</strong>, où j’ai développé des pipelines multimodaux d’analyse de documents pour la microbiologie clinique.",
-      "Je m’intéresse particulièrement à l’<strong>apprentissage par renforcement multi-agents, l’apprentissage par renforcement sûr, la robotique autonome, la vision par ordinateur et la prise de décision adaptative</strong>, en particulier aux systèmes autonomes apprenants capables de se coordonner et de s’adapter dans des environnements complexes.",
       "Je suis actuellement <strong>à la recherche d’un doctorat</strong> dans ces domaines."
     ]
   },

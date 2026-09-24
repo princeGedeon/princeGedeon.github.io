@@ -20,7 +20,7 @@ export interface Publication {
   year: number;
   abstract: string;
   selected: boolean;
-  links: { kind: 'pdf' | 'code' | 'website' | 'slides'; url: string }[];
+  links: { kind: 'pdf' | 'code' | 'website' | 'slides' | 'doi'; url: string }[];
   bibtex: string;
 }
 
@@ -53,9 +53,15 @@ export const publications: Publication[] = parseBibtex(bibRaw)
     year: getYear(e),
     abstract: (e.fields.abstract ?? '').replace(/[{}]/g, ''),
     selected: e.fields.selected?.toLowerCase() === 'true',
-    links: (['pdf', 'code', 'website', 'slides'] as const)
-      .map((kind) => ({ kind, url: e.fields[kind] ?? '' }))
-      .filter((l) => available(l.url)),
+    links: [
+      ...(['pdf', 'code', 'website', 'slides'] as const).map((kind) => ({
+        kind,
+        url: e.fields[kind] ?? '',
+      })),
+      ...(e.fields.doi
+        ? [{ kind: 'doi' as const, url: `https://doi.org/${e.fields.doi.replace(/^https?:\/\/doi\.org\//, '')}` }]
+        : []),
+    ].filter((l) => available(l.url)),
     bibtex: getCleanBibtex(e),
   }))
   .sort((a, b) => b.year - a.year);
