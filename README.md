@@ -49,3 +49,4 @@ corepack yarn build    # astro check (types) + static build into dist/
 Push to `main`. `.github/workflows/deploy.yml` builds and publishes to GitHub Pages
 (Settings → Pages → Source: **GitHub Actions**). The repository should be named
 `princeGedeon.github.io`; otherwise set the repository variable `ASTRO_BASE=/repo-name`.
+"# princeGedeon.github.io" 
