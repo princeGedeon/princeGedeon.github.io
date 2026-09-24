@@ -2,8 +2,8 @@
   "name": "Prince Gédéon GUEDJE",
   "shortName": "Prince G. Guedje",
   "headline": {
-    "en": "AI Researcher · Research Master in AI & Optimization",
-    "fr": "Chercheur en IA · Master Recherche en IA & Optimisation"
+    "en": "M.Sc. in AI & Optimization · PhD applicant in Multi-Agent RL",
+    "fr": "Master IA & Optimisation · Candidat au doctorat en RL multi-agents"
   },
   "affiliation": {
     "en": "Université Clermont Auvergne",
@@ -19,8 +19,8 @@
     "domain": "gmail.com"
   },
   "seeking": {
-    "en": "I am looking for a PhD position in multi-agent / safe reinforcement learning and autonomous robotics.",
-    "fr": "Je recherche un doctorat en apprentissage par renforcement multi-agents / sûr et en robotique autonome."
+    "en": "I am looking for a PhD position in multi-agent / safe reinforcement learning and autonomous robotics, starting in early 2027.",
+    "fr": "Je recherche un doctorat en apprentissage par renforcement multi-agents / sûr et en robotique autonome, à partir de début 2027."
   },
   "cv": {
     "en": "/cv/CV_Prince_Guedje_EN.pdf",
@@ -78,14 +78,14 @@
   ],
   "bio": {
     "en": [
-      "I recently completed an international <strong>Research Master’s (M2) in Artificial Intelligence & Optimization</strong>, fully taught in English, at <strong>Université Clermont Auvergne</strong>, France, supported by the <strong>MIAI Excellence Scholarship</strong>.",
+      "I recently completed an international <strong>Research Master’s (M2) in Artificial Intelligence & Optimization</strong>, fully taught in English, at <strong>Université Clermont Auvergne</strong>, France, as a <strong>MIAI Excellence Scholarship</strong> holder, after ranking <strong>1st in my Master 1</strong> class.",
       "My research experience focuses on <strong>reinforcement learning for autonomous and multi-agent systems</strong>. My Master’s thesis focused on <strong>safe multi-agent reinforcement learning for cooperative UAV and ground-robot systems in 3D urban mapping</strong>. I also worked as an <strong>ML R&D intern at bioMérieux</strong>, developing multimodal document-parsing pipelines for clinical microbiology.",
-      "I am currently <strong>seeking a PhD position</strong> in these areas."
+      "I am currently <strong>seeking a PhD position</strong> in these areas, starting in <strong>early 2027</strong>."
     ],
     "fr": [
-      "Je viens de terminer un <strong>Master Recherche international (M2) en Intelligence Artificielle & Optimisation</strong>, entièrement enseigné en anglais, à l’<strong>Université Clermont Auvergne</strong>, avec le soutien de la <strong>bourse d’excellence MIAI</strong>.",
+      "Je viens de terminer un <strong>Master Recherche international (M2) en Intelligence Artificielle & Optimisation</strong>, entièrement enseigné en anglais, à l’<strong>Université Clermont Auvergne</strong>, en tant que <strong>boursier d’excellence MIAI</strong>, après avoir terminé <strong>major de promotion en Master 1</strong>.",
       "Mon expérience de recherche porte sur l’<strong>apprentissage par renforcement pour les systèmes autonomes et multi-agents</strong>. Mon mémoire de Master portait sur l’<strong>apprentissage par renforcement multi-agents sûr pour des systèmes coopératifs drones / robots terrestres en cartographie urbaine 3D</strong>. J’ai également été <strong>stagiaire R&D en ML chez bioMérieux</strong>, où j’ai développé des pipelines multimodaux d’analyse de documents pour la microbiologie clinique.",
-      "Je suis actuellement <strong>à la recherche d’un doctorat</strong> dans ces domaines."
+      "Je suis actuellement <strong>à la recherche d’un doctorat</strong> dans ces domaines, avec un démarrage <strong>début 2027</strong>."
     ]
   },
   "pillars": [

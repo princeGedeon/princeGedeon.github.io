@@ -11,7 +11,7 @@ import XIcon from '~icons/simple-icons/x';
 
 import { profile, type SocialLink } from '../data';
 import type { Lang } from '../i18n/ui';
-import { useTranslations } from '../i18n/utils';
+import { localizePath, useTranslations } from '../i18n/utils';
 import { encodeEmail } from '../lib/email';
 
 interface Props {
@@ -48,7 +48,7 @@ const itemCls =
       return (
         <li>
           <a
-            href={isEmail ? '#' : s.url}
+            href={isEmail ? localizePath('/contact/', lang) : s.url}
             data-email={isEmail ? encoded : undefined}
             target={isEmail ? undefined : '_blank'}
             rel={isEmail ? undefined : 'noopener noreferrer me'}
