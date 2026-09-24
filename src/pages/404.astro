@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { localizePath, useTranslations } from '../i18n/utils';
+
+const t = useTranslations('en');
+const tf = useTranslations('fr');
+---
+
+<Base lang="en" path="/404/" title={t('404.title')} sidebar={false}>
+  <p>{t('404.body')} <a href={localizePath('/', 'en')}>{t('404.home')}</a></p>
+  <p class="mt-2" lang="fr">{tf('404.body')} <a href={localizePath('/', 'fr')}>{tf('404.home')}</a></p>
+</Base>

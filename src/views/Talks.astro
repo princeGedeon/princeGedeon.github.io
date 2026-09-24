@@ -1,0 +1,47 @@
+---
+import { talks } from '../data';
+import Base from '../layouts/Base.astro';
+import type { Lang } from '../i18n/ui';
+import { asset, available, formatMonth, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Base lang={lang} path="/talks/" title={t('talks.title')} description={t('talks.desc')}>
+  {talks.length === 0 && <p>{t('talks.empty')}</p>}
+  <ol class="space-y-5">
+    {
+      talks.map((talk) => (
+        <li class="grid gap-x-4 sm:grid-cols-[5.5rem_1fr]">
+          <time class="meta pt-0.5" datetime={talk.date}>
+            {formatMonth(talk.date, lang)}
+          </time>
+          <div>
+            <p class="font-semibold leading-snug text-stone-900 dark:text-slate-100">{talk.title[lang]}</p>
+            <p class="text-sm">
+              {talk.event[lang]} · {talk.location}
+            </p>
+            <p class="mt-1.5 flex flex-wrap gap-1.5">
+              <span class="tag">{talk.type[lang]}</span>
+              {available(talk.slides) && (
+                <a class="badge" href={asset(talk.slides)} target="_blank" rel="noopener noreferrer">
+                  {t('talks.slides')}
+                </a>
+              )}
+              {available(talk.video) && (
+                <a class="badge" href={asset(talk.video)} target="_blank" rel="noopener noreferrer">
+                  {t('talks.video')}
+                </a>
+              )}
+            </p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</Base>

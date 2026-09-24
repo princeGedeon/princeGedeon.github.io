@@ -1,0 +1,123 @@
+---
+import { profile, skills } from '../data';
+import Base from '../layouts/Base.astro';
+import type { Lang } from '../i18n/ui';
+import { asset, available, localizePath, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
+const row = 'grid gap-x-4 sm:grid-cols-[8.5rem_1fr]';
+---
+
+<Base lang={lang} path="/cv/" title={t('cv.title')} description={t('cv.desc')}>
+  {
+    cvs.length > 0 && (
+      <p class="-mt-2 mb-6 flex flex-wrap gap-2">
+        {cvs.map((l) => (
+          <a class="badge" href={asset(profile.cv[l])} download>
+            ↓ {t('cv.download')} ({l.toUpperCase()})
+          </a>
+        ))}
+      </p>
+    )
+  }
+
+  <section class="mb-8">
+    <h2 class="section-title">{t('cv.education')}</h2>
+    <ul class="space-y-4">
+      {
+        profile.education.map((e) => (
+          <li class={row}>
+            <span class="meta pt-0.5">{e.period}</span>
+            <div>
+              <p class="font-semibold text-stone-900 dark:text-slate-100">{e.degree[lang]}</p>
+              <p class="text-sm">{e.institution}</p>
+              <ul class="mt-1 list-disc pl-5 text-sm">
+                {e.details[lang].map((d) => (
+                  <li set:html={d} />
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mb-8">
+    <h2 class="section-title">{t('cv.experience')}</h2>
+    <ul class="space-y-4">
+      {
+        profile.experience.map((e) => (
+          <li class={row}>
+            <span class="meta pt-0.5">{e.period}</span>
+            <div>
+              <p class="font-semibold text-stone-900 dark:text-slate-100">
+                {e.role[lang]} · {e.organization}
+              </p>
+              <p class="meta">{e.location}</p>
+              <ul class="mt-1 list-disc pl-5 text-sm">
+                {e.details[lang].map((d) => (
+                  <li set:html={d} />
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mb-8">
+    <h2 class="section-title">{t('cv.skills')}</h2>
+    <dl class="space-y-2">
+      {
+        skills.map((s) => (
+          <div class={row}>
+            <dt class="text-sm font-medium text-stone-900 dark:text-slate-100">{s.category[lang]}</dt>
+            <dd class="flex flex-wrap gap-1">
+              {s.items.map((i) => (
+                <span class="tag">{i}</span>
+              ))}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="mb-8 grid gap-8 sm:grid-cols-2">
+    <div>
+      <h2 class="section-title">{t('cv.languages')}</h2>
+      <ul class="text-sm">{profile.languages.map((l) => <li>{l[lang]}</li>)}</ul>
+    </div>
+    <div>
+      <h2 class="section-title">{t('cv.volunteering')}</h2>
+      <ul class="text-sm">
+        {
+          profile.volunteering.map((v) => (
+            <li>
+              <span class="font-medium">{v.organization}</span> — {v.details[lang]}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="mb-6">
+    <h2 class="section-title">{t('cv.references')}</h2>
+    <p class="text-sm">{profile.references[lang]}</p>
+  </section>
+
+  <p class="meta">
+    {t('cv.more')}
+    <a href={localizePath('/publications/', lang)}>{t('nav.publications')}</a> ·
+    <a href={localizePath('/awards/', lang)}>{t('nav.awards')}</a>
+  </p>
+</Base>

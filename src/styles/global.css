@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+/* Dark mode follows [data-theme='dark'] on <html>, set before first paint in Base.astro.
+   `dark:` utilities are mapped onto that attribute. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme {
+  --font-sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+  --color-accent: #1d4ed8;
+  --color-accent-dark: #7dd3fc;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+  html[data-theme='dark'] {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-white font-sans text-[15px] leading-relaxed text-stone-800 antialiased dark:bg-[#0f172a] dark:text-slate-300;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-semibold tracking-tight text-stone-900 dark:text-slate-100;
+  }
+  a {
+    @apply text-accent underline-offset-2 hover:underline dark:text-accent-dark;
+  }
+  :focus-visible {
+    @apply rounded-sm outline-2 outline-offset-2 outline-accent dark:outline-accent-dark;
+  }
+  strong {
+    @apply font-semibold text-stone-900 dark:text-slate-100;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply mb-3 border-b border-stone-200 pb-1 text-lg dark:border-slate-700;
+  }
+  .meta {
+    @apply font-mono text-xs text-stone-500 dark:text-slate-400;
+  }
+  .badge {
+    @apply inline-flex cursor-pointer items-center rounded border border-stone-300 px-1.5 py-px font-mono text-[11px] leading-5 text-stone-700 no-underline select-none hover:border-accent hover:text-accent hover:no-underline dark:border-slate-600 dark:text-slate-300 dark:hover:border-accent-dark dark:hover:text-accent-dark;
+  }
+  .tag {
+    @apply inline-block rounded bg-stone-100 px-1.5 py-px font-mono text-[11px] text-stone-700 dark:bg-slate-800 dark:text-slate-300;
+  }
+  .prose-tight p + p {
+    @apply mt-3;
+  }
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+}

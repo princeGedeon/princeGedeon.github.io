@@ -1,0 +1,43 @@
+---
+import { teaching } from '../data';
+import Base from '../layouts/Base.astro';
+import type { Lang } from '../i18n/ui';
+import { formatMonth, localizePath, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Base lang={lang} path="/teaching/" title={t('teaching.title')} description={t('teaching.desc')}>
+  <ul class="space-y-5">
+    {
+      teaching.map((c) => (
+        <li class="grid gap-x-4 sm:grid-cols-[5.5rem_1fr]">
+          <time class="meta pt-0.5" datetime={c.date}>
+            {formatMonth(c.date, lang)}
+          </time>
+          <div>
+            <a
+              href={localizePath(`/teaching/${c.id}/`, lang)}
+              class="font-semibold text-stone-900 dark:text-slate-100"
+            >
+              {c.title[lang]}
+            </a>
+            <p class="text-sm">
+              {c.role[lang]} · {c.institution}
+            </p>
+            <p class="meta">
+              {c.level[lang]}
+              {c.hours && ` · ${c.hours} ${t('teaching.hours')}`}
+            </p>
+            <p class="mt-1 text-sm">{c.summary[lang]}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

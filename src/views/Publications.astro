@@ -1,0 +1,33 @@
+---
+import PublicationItem from '../components/PublicationItem.astro';
+import Base from '../layouts/Base.astro';
+import { publications } from '../lib/publications';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const years = [...new Set(publications.map((p) => p.year))];
+---
+
+<Base lang={lang} path="/publications/" title={t('pub.title')} description={t('pub.desc')}>
+  {publications.length === 0 && <p>{t('pub.empty')}</p>}
+  {
+    years.map((y) => (
+      <section class="mb-8">
+        <h2 class="section-title font-mono">{y}</h2>
+        <ol class="space-y-5">
+          {publications
+            .filter((p) => p.year === y)
+            .map((pub) => (
+              <PublicationItem pub={pub} lang={lang} />
+            ))}
+        </ol>
+      </section>
+    ))
+  }
+</Base>

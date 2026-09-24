@@ -1,0 +1,30 @@
+[
+  {
+    "category": { "en": "Reinforcement Learning", "fr": "Apprentissage par renforcement" },
+    "items": ["MAPPO", "Lagrangian Safe RL", "Control Barrier Functions", "Dec-POMDP", "Stable-Baselines3", "Gymnasium"]
+  },
+  {
+    "category": { "en": "Robotics & Simulation", "fr": "Robotique & simulation" },
+    "items": ["ROS 2 (Jazzy)", "Gazebo", "OctoMap", "Onshape"]
+  },
+  {
+    "category": { "en": "Deep Learning & Vision", "fr": "Deep learning & vision" },
+    "items": ["PyTorch", "TensorFlow", "scikit-learn", "Transformers", "Vision Transformers", "YOLO", "ByteTrack", "OpenCV"]
+  },
+  {
+    "category": { "en": "LLMs & Agents", "fr": "LLM & agents" },
+    "items": ["LangChain", "CrewAI", "LoRA fine-tuning", "Embeddings", "Pinecone", "ChromaDB"]
+  },
+  {
+    "category": { "en": "Generative Audio", "fr": "Audio génératif" },
+    "items": ["Tacotron", "VITS", "HiFi-GAN"]
+  },
+  {
+    "category": { "en": "Programming", "fr": "Programmation" },
+    "items": ["Python", "C/C++", "Go", "JavaScript", "SQL"]
+  },
+  {
+    "category": { "en": "MLOps & DevOps", "fr": "MLOps & DevOps" },
+    "items": ["Docker", "Ansible", "Terraform", "Airflow", "Gradio", "Streamlit", "PostgreSQL"]
+  }
+]

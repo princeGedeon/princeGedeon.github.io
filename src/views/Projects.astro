@@ -1,0 +1,97 @@
+---
+import { projects, type Project } from '../data';
+import Base from '../layouts/Base.astro';
+import { publicationsByKey } from '../lib/publications';
+import type { Lang } from '../i18n/ui';
+import { asset, available, localizePath, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const featured = projects.filter((p) => p.featured);
+const others = projects.filter((p) => !p.featured);
+const hasPaper = (p: Project) => !!p.paper && publicationsByKey.has(p.paper);
+---
+
+<Base lang={lang} path="/projects/" title={t('projects.title')} description={t('projects.desc')}>
+  <div class="space-y-8">
+    {
+      featured.map((p) => (
+        <article id={p.id} class="border-b border-stone-200 pb-8 last:border-0 dark:border-slate-800">
+          <div class:list={[available(p.figure) && 'sm:grid sm:grid-cols-[1fr_14rem] sm:gap-6']}>
+            <div>
+              <h2 class="text-lg leading-snug">{p.title[lang]}</h2>
+              <p class="meta mt-0.5">
+                {p.context[lang]} · {p.period}
+              </p>
+              <p class="mt-2">{p.summary[lang]}</p>
+              {p.highlights[lang].length > 0 && (
+                <ul class="mt-2 list-disc space-y-0.5 pl-5 text-sm">
+                  {p.highlights[lang].map((h) => (
+                    <li>{h}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            {available(p.figure) && (
+              <img
+                src={asset(p.figure)}
+                alt={p.title[lang]}
+                loading="lazy"
+                class="mt-3 w-full rounded border border-stone-200 sm:mt-0 dark:border-slate-700"
+              />
+            )}
+          </div>
+          <p class="mt-3 flex flex-wrap items-center gap-1.5">
+            {p.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+            {p.repo && (
+              <a class="badge" href={p.repo} target="_blank" rel="noopener noreferrer">
+                {t('projects.code')}
+              </a>
+            )}
+            {available(p.video) && (
+              <a class="badge" href={asset(p.video)} target="_blank" rel="noopener noreferrer">
+                {t('projects.video')}
+              </a>
+            )}
+            {hasPaper(p) && (
+              <a class="badge" href={localizePath('/publications/', lang)}>
+                {t('projects.paper')}
+              </a>
+            )}
+          </p>
+        </article>
+      ))
+    }
+  </div>
+
+  {
+    others.length > 0 && (
+      <section class="mt-8">
+        <h2 class="section-title">{t('projects.other')}</h2>
+        <ul class="space-y-3 text-sm">
+          {others.map((p) => (
+            <li id={p.id}>
+              <span class="font-medium text-stone-900 dark:text-slate-100">{p.title[lang]}</span>
+              <span class="meta">
+                {' '}
+                · {p.context[lang]} · {p.period}
+              </span>
+              {p.repo && (
+                <a class="badge ml-1" href={p.repo} target="_blank" rel="noopener noreferrer">
+                  {t('projects.code')}
+                </a>
+              )}
+              <p>{p.summary[lang]}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</Base>

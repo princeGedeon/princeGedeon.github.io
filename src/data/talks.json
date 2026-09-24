@@ -1,0 +1,28 @@
+[
+  {
+    "id": "biomerieux-2026",
+    "date": "2026-08",
+    "title": {
+      "en": "Agentic multimodal pipelines for structured document extraction",
+      "fr": "Pipelines multimodaux agentiques pour l'extraction structurée de documents"
+    },
+    "event": { "en": "Internship thesis defense, bioMérieux / Université Clermont Auvergne", "fr": "Soutenance de stage, bioMérieux / Université Clermont Auvergne" },
+    "location": "France",
+    "type": { "en": "Defense", "fr": "Soutenance" },
+    "slides": "/talks/biomerieux-2026.pdf",
+    "video": ""
+  },
+  {
+    "id": "master-thesis-2026",
+    "date": "2026-05",
+    "title": {
+      "en": "Safe multi-agent reinforcement learning for multi-UAV 3D urban mapping under constraints",
+      "fr": "RL multi-agents sûr pour la cartographie 3D urbaine multi-drones sous contraintes"
+    },
+    "event": { "en": "Master's research presentation, Université Clermont Auvergne", "fr": "Présentation du mémoire de recherche, Université Clermont Auvergne" },
+    "location": "Clermont-Ferrand, France",
+    "type": { "en": "Presentation", "fr": "Présentation" },
+    "slides": "/talks/master-thesis-2026.pdf",
+    "video": ""
+  }
+]

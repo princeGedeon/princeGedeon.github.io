@@ -1,0 +1,68 @@
+---
+import { teaching } from '../data';
+import Base from '../layouts/Base.astro';
+import type { Lang } from '../i18n/ui';
+import { asset, available, formatMonth, localizePath, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  id: string;
+}
+
+const { lang, id } = Astro.props;
+const t = useTranslations(lang);
+const course = teaching.find((c) => c.id === id)!;
+const materials = course.materials.filter((m) => available(m.url));
+const pdfPreview = materials.find((m) => m.url.endsWith('.pdf'));
+---
+
+<Base
+  lang={lang}
+  path={`/teaching/${course.id}/`}
+  title={course.title[lang]}
+  description={`${course.role[lang]} · ${course.institution} · ${formatMonth(course.date, lang, 'long')}`}
+>
+  <p class="meta -mt-4 mb-4">
+    {course.level[lang]}
+    {course.hours && ` · ${course.hours} ${t('teaching.hours')}`}
+  </p>
+  <p>{course.summary[lang]}</p>
+
+  <section class="mt-8">
+    <h2 class="section-title">{t('teaching.syllabus')}</h2>
+    <ol class="list-decimal space-y-1 pl-5 text-sm">
+      {course.syllabus[lang].map((s) => <li>{s}</li>)}
+    </ol>
+  </section>
+
+  <section class="mt-8">
+    <h2 class="section-title">{t('teaching.materials')}</h2>
+    {
+      materials.length === 0 ? (
+        <p class="text-sm">{t('teaching.noMaterials')}</p>
+      ) : (
+        <p class="flex flex-wrap gap-1.5">
+          {materials.map((m) => (
+            <a class="badge" href={asset(m.url)} target="_blank" rel="noopener noreferrer">
+              {m.label[lang]}
+            </a>
+          ))}
+        </p>
+      )
+    }
+    {
+      pdfPreview && (
+        <iframe
+          src={asset(pdfPreview.url)}
+          title={pdfPreview.label[lang]}
+          class="mt-4 aspect-[4/3] w-full rounded border border-stone-200 dark:border-slate-700"
+          loading="lazy"
+        />
+      )
+    }
+  </section>
+
+  <p class="mt-8 text-sm">
+    <a href={localizePath('/teaching/', lang)}>← {t('teaching.back')}</a>
+  </p>
+</Base>

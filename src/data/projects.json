@@ -1,0 +1,104 @@
+[
+  {
+    "id": "marl-uav-mapping",
+    "featured": true,
+    "period": "Sep 2025 – Aug 2026",
+    "title": {
+      "en": "Safe Multi-Agent RL for Multi-UAV 3D Urban Mapping",
+      "fr": "RL multi-agents sûr pour la cartographie 3D urbaine multi-drones"
+    },
+    "context": { "en": "Master's thesis · Université Clermont Auvergne", "fr": "Mémoire de Master · Université Clermont Auvergne" },
+    "summary": {
+      "en": "Decentralized coverage path planning for a UAV swarm mapping a 3D urban environment, formulated as a Dec-POMDP under energy, communication and no-fly-zone constraints.",
+      "fr": "Planification décentralisée de couverture pour un essaim de drones cartographiant un environnement urbain 3D, formulée comme un Dec-POMDP sous contraintes d'énergie, de communication et de zones interdites."
+    },
+    "highlights": {
+      "en": [
+        "Lagrangian MAPPO (CTDE) to trade off coverage against energy and safety budgets.",
+        "Control Barrier Functions as a safety layer for collision and no-fly-zone avoidance.",
+        "Probabilistic 3D occupancy mapping (OctoMap) inside a ROS 2 / Gazebo simulation stack."
+      ],
+      "fr": [
+        "MAPPO lagrangien (CTDE) pour arbitrer entre couverture et budgets d'énergie et de sécurité.",
+        "Control Barrier Functions comme couche de sécurité (collisions, zones interdites).",
+        "Cartographie 3D probabiliste (OctoMap) dans un environnement de simulation ROS 2 / Gazebo."
+      ]
+    },
+    "tags": ["MAPPO", "Safe RL", "CBF", "Dec-POMDP", "ROS 2", "Gazebo", "OctoMap", "PyTorch", "Python"],
+    "repo": "",
+    "figure": "/projects/marl-uav-mapping.png",
+    "video": ""
+  },
+  {
+    "id": "vlm-document-parsing",
+    "featured": true,
+    "period": "Mar 2026 – Aug 2026",
+    "title": {
+      "en": "Multimodal VLM Document-Parsing Pipeline",
+      "fr": "Pipeline multimodal d'analyse de documents par VLM"
+    },
+    "context": { "en": "Industrial R&D · bioMérieux", "fr": "R&D industrielle · bioMérieux" },
+    "summary": {
+      "en": "Agentic orchestration of vision-language and language models to turn dense, unstructured PDFs (text, tables, figures) into structured, validated data.",
+      "fr": "Orchestration agentique de modèles vision-langage et de LLM pour transformer des PDF denses et non structurés (texte, tableaux, figures) en données structurées et validées."
+    },
+    "highlights": {
+      "en": [
+        "Multi-agent architecture separating layout analysis, extraction and validation.",
+        "Structured outputs from state-of-the-art foundation models.",
+        "Industrial project: code and data are proprietary."
+      ],
+      "fr": [
+        "Architecture multi-agents séparant analyse de mise en page, extraction et validation.",
+        "Sorties structurées à partir de modèles de fondation de l'état de l'art.",
+        "Projet industriel : code et données confidentiels."
+      ]
+    },
+    "tags": ["VLM", "LLM Agents", "Structured Extraction", "Python"],
+    "repo": "",
+    "figure": "",
+    "video": ""
+  },
+  {
+    "id": "nextvision",
+    "featured": true,
+    "period": "2023 – 2024",
+    "title": {
+      "en": "NextVision: Intelligent Video Surveillance",
+      "fr": "NextVision : vidéosurveillance intelligente"
+    },
+    "context": { "en": "Bachelor thesis · IFRI · published at ICICT 2024", "fr": "Mémoire de Licence · IFRI · publié à ICICT 2024" },
+    "summary": {
+      "en": "Real-time multi-object detection and tracking combined with natural-language processing for semantic querying of video streams.",
+      "fr": "Détection et suivi multi-objets en temps réel combinés au traitement du langage naturel pour l'interrogation sémantique de flux vidéo."
+    },
+    "highlights": {
+      "en": ["Fine-tuned YOLO detector with ByteTrack multi-object tracking.", "NLP / LLM layer for semantic video analysis."],
+      "fr": ["Détecteur YOLO affiné et suivi multi-objets ByteTrack.", "Couche NLP / LLM pour l'analyse sémantique des vidéos."]
+    },
+    "tags": ["YOLO", "ByteTrack", "OpenCV", "NLP", "PyTorch", "Python"],
+    "repo": "",
+    "paper": "guedje2024nextvision",
+    "figure": "",
+    "video": ""
+  },
+  {
+    "id": "tourism-bot",
+    "featured": false,
+    "period": "May 2024",
+    "title": {
+      "en": "Multilingual Multimodal Assistant for Tourism",
+      "fr": "Assistant multimodal multilingue pour le tourisme"
+    },
+    "context": { "en": "Hackathon", "fr": "Hackathon" },
+    "summary": {
+      "en": "Voice assistant providing cultural and logistical guidance in local languages (Fon, Yoruba) using Hugging Face models and agents.",
+      "fr": "Assistant vocal fournissant des informations culturelles et pratiques en langues locales (fongbé, yoruba) avec des modèles Hugging Face et des agents."
+    },
+    "highlights": { "en": [], "fr": [] },
+    "tags": ["Hugging Face", "Speech", "LLM Agents", "Python"],
+    "repo": "https://github.com/princeGedeon/apibotmultimodal",
+    "figure": "",
+    "video": ""
+  }
+]

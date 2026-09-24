@@ -1,0 +1,38 @@
+[
+  {
+    "id": "hexagone-fer-2025",
+    "title": {
+      "en": "Deep Learning for Facial Emotion Recognition",
+      "fr": "Deep learning pour la reconnaissance d'émotions faciales"
+    },
+    "institution": "Hexagone School, Clermont-Ferrand",
+    "role": { "en": "Visiting Instructor", "fr": "Chargé de cours" },
+    "date": "2025-02",
+    "hours": 28,
+    "level": { "en": "Graduate students", "fr": "Étudiants de Master" },
+    "summary": {
+      "en": "A hands-on course taking students from classical CNNs to Vision Transformers, applied to recognizing emotions from face images.",
+      "fr": "Un cours pratique menant des CNN classiques aux Vision Transformers, appliqué à la reconnaissance d'émotions sur des images de visages."
+    },
+    "syllabus": {
+      "en": [
+        "Computer vision foundations and the facial emotion recognition task",
+        "Convolutional neural networks in PyTorch",
+        "Transfer learning and fine-tuning pretrained backbones",
+        "Vision Transformers: architecture and fine-tuning",
+        "Evaluation, class imbalance and deployment"
+      ],
+      "fr": [
+        "Bases de la vision par ordinateur et tâche de reconnaissance d'émotions",
+        "Réseaux de neurones convolutifs avec PyTorch",
+        "Transfer learning et fine-tuning de modèles pré-entraînés",
+        "Vision Transformers : architecture et fine-tuning",
+        "Évaluation, déséquilibre des classes et déploiement"
+      ]
+    },
+    "materials": [
+      { "label": { "en": "Slides", "fr": "Diapositives" }, "url": "/teaching/hexagone-fer-2025/slides.pdf" },
+      { "label": { "en": "Notebooks", "fr": "Notebooks" }, "url": "/teaching/hexagone-fer-2025/notebooks.zip" }
+    ]
+  }
+]

@@ -1,0 +1,41 @@
+---
+import { profile } from '../data';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import { encodeEmail } from '../lib/email';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const encoded = encodeEmail(profile.email.user, profile.email.domain);
+---
+
+<p class="flex flex-wrap items-center gap-2">
+  <a href="#" data-email-full={encoded} class="font-mono text-sm">
+    <noscript>{profile.email.user} [at] {profile.email.domain}</noscript>
+  </a>
+  <button type="button" class="badge" data-copy-email-full={encoded} data-done={t('email.copied')}>
+    {t('email.copy')}
+  </button>
+</p>
+
+<script>
+  import { decodeEmail } from '../lib/email';
+
+  document.querySelectorAll<HTMLAnchorElement>('a[data-email-full]').forEach((a) => {
+    const addr = decodeEmail(a.dataset.emailFull!);
+    a.href = `mailto:${addr}`;
+    a.textContent = addr;
+  });
+  document.querySelectorAll<HTMLButtonElement>('button[data-copy-email-full]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const label = btn.textContent;
+      await navigator.clipboard.writeText(decodeEmail(btn.dataset.copyEmailFull!));
+      btn.textContent = btn.dataset.done ?? label;
+      setTimeout(() => (btn.textContent = label), 1500);
+    });
+  });
+</script>

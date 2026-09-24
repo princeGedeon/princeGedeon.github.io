@@ -1,0 +1,92 @@
+---
+import ArxivIcon from '~icons/simple-icons/arxiv';
+import GithubIcon from '~icons/simple-icons/github';
+import ScholarIcon from '~icons/simple-icons/googlescholar';
+import InstagramIcon from '~icons/simple-icons/instagram';
+import OrcidIcon from '~icons/simple-icons/orcid';
+import XIcon from '~icons/simple-icons/x';
+// LinkedIn was removed from simple-icons at the brand's request; Font Awesome's path is used instead.
+import LinkedinIcon from '~icons/fa-brands/linkedin';
+import MailIcon from '~icons/fa-solid/envelope';
+
+import { profile, type SocialLink } from '../data';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import { encodeEmail } from '../lib/email';
+
+interface Props {
+  lang: Lang;
+  /** 'list' = vertical list with labels, 'row' = icons only. */
+  variant?: 'list' | 'row';
+}
+
+const { lang, variant = 'row' } = Astro.props;
+const t = useTranslations(lang);
+
+const icons = {
+  email: MailIcon,
+  googlescholar: ScholarIcon,
+  github: GithubIcon,
+  linkedin: LinkedinIcon,
+  orcid: OrcidIcon,
+  arxiv: ArxivIcon,
+  x: XIcon,
+  instagram: InstagramIcon,
+} satisfies Record<SocialLink['id'], unknown>;
+
+const items = profile.socials.filter((s) => s.enabled && (s.id === 'email' || s.url));
+const encoded = encodeEmail(profile.email.user, profile.email.domain);
+const itemCls =
+  'inline-flex items-center gap-2 text-stone-600 no-underline hover:text-accent dark:text-slate-400 dark:hover:text-accent-dark';
+---
+
+<ul class:list={[variant === 'list' ? 'space-y-1.5 text-sm' : 'flex flex-wrap items-center gap-3']}>
+  {
+    items.map((s) => {
+      const Icon = icons[s.id];
+      const isEmail = s.id === 'email';
+      return (
+        <li>
+          <a
+            href={isEmail ? '#' : s.url}
+            data-email={isEmail ? encoded : undefined}
+            target={isEmail ? undefined : '_blank'}
+            rel={isEmail ? undefined : 'noopener noreferrer me'}
+            aria-label={s.label}
+            title={s.label}
+            class={itemCls}
+          >
+            <Icon class="size-4 shrink-0" aria-hidden="true" />
+            {variant === 'list' && <span>{s.label}</span>}
+          </a>
+          {isEmail && variant === 'list' && (
+            <button
+              type="button"
+              class="badge ml-1 align-middle"
+              data-copy-email={encoded}
+              data-done={t('email.copied')}
+            >
+              {t('email.copy')}
+            </button>
+          )}
+        </li>
+      );
+    })
+  }
+</ul>
+
+<script>
+  import { decodeEmail } from '../lib/email';
+
+  document.querySelectorAll<HTMLAnchorElement>('a[data-email]').forEach((a) => {
+    a.href = `mailto:${decodeEmail(a.dataset.email!)}`;
+  });
+  document.querySelectorAll<HTMLButtonElement>('button[data-copy-email]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const label = btn.textContent;
+      await navigator.clipboard.writeText(decodeEmail(btn.dataset.copyEmail!));
+      btn.textContent = btn.dataset.done ?? label;
+      setTimeout(() => (btn.textContent = label), 1500);
+    });
+  });
+</script>

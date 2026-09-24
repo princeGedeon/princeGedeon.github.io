@@ -1,0 +1,103 @@
+---
+import type { Lang } from '../i18n/ui';
+import { asset, useTranslations } from '../i18n/utils';
+import type { Publication } from '../lib/publications';
+
+interface Props {
+  pub: Publication;
+  lang: Lang;
+}
+
+const { pub, lang } = Astro.props;
+const t = useTranslations(lang);
+const linkLabel = { pdf: t('pub.pdf'), code: t('pub.code'), website: t('pub.website'), slides: t('pub.slides') };
+---
+
+<li class="grid gap-x-4 sm:grid-cols-[4.5rem_1fr]">
+  <div class="mb-1 sm:mb-0">
+    {
+      pub.abbr && (
+        <span class="inline-block w-full rounded bg-accent px-1 py-0.5 text-center font-mono text-[11px] font-semibold text-white dark:bg-sky-800">
+          {pub.abbr}
+        </span>
+      )
+    }
+  </div>
+  <div>
+    <p class="font-semibold leading-snug text-stone-900 dark:text-slate-100">{pub.title}</p>
+    <p class="text-sm">
+      {
+        pub.authors.map((a, i) => (
+          <>
+            {a.self ? <strong class="underline decoration-stone-300 underline-offset-2">{a.name}</strong> : a.name}
+            {i < pub.authors.length - 1 && ', '}
+          </>
+        ))
+      }
+    </p>
+    <p class="text-sm italic">{pub.venue}, {pub.year}</p>
+
+    <div class="mt-1.5 flex flex-wrap items-start gap-1.5" data-pub>
+      {
+        pub.abstract && (
+          <button type="button" class="badge" aria-expanded="false" data-toggle="abs">
+            {t('pub.abstract')}
+          </button>
+        )
+      }
+      <button type="button" class="badge" aria-expanded="false" data-toggle="bib">
+        {t('pub.bibtex')}
+      </button>
+      {
+        pub.links.map((l) => (
+          <a class="badge" href={asset(l.url)} target="_blank" rel="noopener noreferrer">
+            {linkLabel[l.kind]}
+          </a>
+        ))
+      }
+      {
+        pub.abstract && (
+          <p data-panel="abs" hidden class="mt-1 w-full rounded border border-stone-200 p-3 text-sm dark:border-slate-700">
+            {pub.abstract}
+          </p>
+        )
+      }
+      <div data-panel="bib" hidden class="relative mt-1 w-full">
+        <pre
+          class="overflow-x-auto rounded border border-stone-200 bg-stone-50 p-3 font-mono text-xs dark:border-slate-700 dark:bg-slate-900"><code>{pub.bibtex}</code></pre>
+        <button
+          type="button"
+          class="badge absolute top-2 right-2 bg-white dark:bg-slate-900"
+          data-copy-bib
+          data-done={t('pub.copied')}>{t('pub.copy')}</button
+        >
+      </div>
+    </div>
+  </div>
+</li>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-pub]').forEach((root) => {
+    root.querySelectorAll<HTMLButtonElement>('[data-toggle]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.toggle;
+        root.querySelectorAll<HTMLElement>('[data-panel]').forEach((panel) => {
+          const open = panel.dataset.panel === target && panel.hidden;
+          panel.hidden = !open;
+        });
+        root.querySelectorAll<HTMLButtonElement>('[data-toggle]').forEach((b) => {
+          const panel = root.querySelector<HTMLElement>(`[data-panel="${b.dataset.toggle}"]`);
+          b.setAttribute('aria-expanded', String(!!panel && !panel.hidden));
+        });
+      });
+    });
+    root.querySelector<HTMLButtonElement>('[data-copy-bib]')?.addEventListener('click', async (e) => {
+      const btn = e.currentTarget as HTMLButtonElement;
+      const code = root.querySelector('[data-panel="bib"] code')?.textContent ?? '';
+      const label = btn.textContent;
+      await navigator.clipboard.writeText(code);
+      btn.textContent = btn.dataset.done ?? label;
+      setTimeout(() => (btn.textContent = label), 1500);
+    });
+  });
+</script>

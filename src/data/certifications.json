@@ -1,0 +1,50 @@
+[
+  {
+    "id": "rl-specialization-alberta",
+    "title": "Reinforcement Learning Specialization",
+    "issuer": "University of Alberta · Coursera",
+    "date": "2026-01",
+    "credentialId": "",
+    "verifyUrl": "",
+    "pdf": "/certificates/rl-specialization-alberta.pdf",
+    "thumbnail": "/certificates/rl-specialization-alberta.jpg",
+    "skills": ["TD learning", "Policy gradient", "Function approximation"],
+    "featured": true
+  },
+  {
+    "id": "dl-pytorch",
+    "title": "Deep Learning with PyTorch Specialization",
+    "issuer": "DeepLearning.AI · Coursera",
+    "date": "2026-02",
+    "credentialId": "",
+    "verifyUrl": "",
+    "pdf": "/certificates/dl-pytorch.pdf",
+    "thumbnail": "/certificates/dl-pytorch.jpg",
+    "skills": ["PyTorch", "CNNs", "Transformers"],
+    "featured": true
+  },
+  {
+    "id": "ros2-udemy",
+    "title": "ROS 2 for Beginners and Advanced",
+    "issuer": "Udemy",
+    "date": "2025-12",
+    "credentialId": "",
+    "verifyUrl": "",
+    "pdf": "/certificates/ros2-udemy.pdf",
+    "thumbnail": "/certificates/ros2-udemy.jpg",
+    "skills": ["ROS 2", "Nodes & topics", "Launch files"],
+    "featured": false
+  },
+  {
+    "id": "ml-specialization",
+    "title": "Machine Learning Specialization",
+    "issuer": "DeepLearning.AI · Stanford Online",
+    "date": "2025-02",
+    "credentialId": "",
+    "verifyUrl": "",
+    "pdf": "/certificates/ml-specialization.pdf",
+    "thumbnail": "/certificates/ml-specialization.jpg",
+    "skills": ["Supervised learning", "Unsupervised learning", "Recommender systems"],
+    "featured": false
+  }
+]

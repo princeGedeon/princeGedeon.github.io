@@ -1,0 +1,65 @@
+---
+import { profile } from '../data';
+import type { Lang } from '../i18n/ui';
+import { asset, available, useTranslations } from '../i18n/utils';
+import SocialIcons from './SocialIcons.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const hasPhoto = available(profile.photo);
+const initials = profile.name
+  .split(/\s+/)
+  .map((w) => w[0])
+  .slice(0, 2)
+  .join('');
+const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
+---
+
+<aside class="mb-8 md:mb-0">
+  <div class="flex items-center gap-4 md:block">
+    {
+      hasPhoto ? (
+        <img
+          src={asset(profile.photo)}
+          alt={profile.name}
+          width="160"
+          height="160"
+          class="size-24 rounded-lg border border-stone-200 object-cover md:size-40 dark:border-slate-700"
+        />
+      ) : (
+        <div
+          class="flex size-24 items-center justify-center rounded-lg border border-stone-200 bg-stone-100 font-mono text-2xl text-stone-500 md:size-40 dark:border-slate-700 dark:bg-slate-800"
+          aria-hidden="true"
+        >
+          {initials}
+        </div>
+      )
+    }
+    <div class="md:mt-4">
+      <p class="font-semibold text-stone-900 dark:text-slate-100">{profile.name}</p>
+      <p class="mt-1 text-sm leading-snug">{profile.headline[lang]}</p>
+      <p class="meta mt-2">{profile.affiliation[lang]}</p>
+      <p class="meta">{profile.location[lang]}</p>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <SocialIcons lang={lang} variant="list" />
+  </div>
+
+  {
+    cvs.length > 0 && (
+      <p class="mt-3 flex flex-wrap gap-1.5">
+        {cvs.map((l) => (
+          <a class="badge" href={asset(profile.cv[l])} download title={t('cv.download')}>
+            CV · {l.toUpperCase()}
+          </a>
+        ))}
+      </p>
+    )
+  }
+</aside>

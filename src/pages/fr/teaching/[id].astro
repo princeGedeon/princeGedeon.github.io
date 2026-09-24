@@ -1,0 +1,12 @@
+---
+import { teaching } from '../../../data';
+import View from '../../../views/TeachingCourse.astro';
+
+export function getStaticPaths() {
+  return teaching.map((c) => ({ params: { id: c.id } }));
+}
+
+const { id } = Astro.params;
+---
+
+<View lang="fr" id={id} />

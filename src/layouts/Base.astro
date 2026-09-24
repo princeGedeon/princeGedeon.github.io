@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+
+import Footer from '../components/Footer.astro';
+import Navbar from '../components/Navbar.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { profile } from '../data';
+import { defaultLang, type Lang, languages } from '../i18n/ui';
+import { localizePath, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  /** Route path without language prefix, e.g. '/cv/'. */
+  path: string;
+  title?: string;
+  description?: string;
+  /** Hide the profile sidebar (e.g. 404). */
+  sidebar?: boolean;
+}
+
+const { lang, path, title, description, sidebar = true } = Astro.props;
+const t = useTranslations(lang);
+const site = Astro.site ?? new URL('http://localhost');
+
+const fullTitle = title ? `${title} | ${profile.name}` : `${profile.name} — ${profile.headline[lang]}`;
+const desc = description ?? profile.seeking[lang];
+const canonical = new URL(localizePath(path, lang), site).href;
+const alternates = (Object.keys(languages) as Lang[]).map((l) => ({
+  lang: l,
+  href: new URL(localizePath(path, l), site).href,
+}));
+const xDefault = new URL(localizePath(path, defaultLang), site).href;
+const photo = new URL(localizePath(profile.photo, defaultLang), site).href;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  jobTitle: profile.headline.en,
+  url: new URL(localizePath('/', defaultLang), site).href,
+  sameAs: profile.socials.filter((s) => s.enabled && s.url).map((s) => s.url),
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    <meta name="author" content={profile.name} />
+    <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
+    <link rel="icon" href={localizePath('/favicon.svg', defaultLang)} type="image/svg+xml" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={photo} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
+    <meta name="twitter:card" content="summary" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline>
+      (() => {
+        const s = localStorage.getItem('theme');
+        const dark = s ? s === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:px-2 dark:focus:bg-slate-900"
+      >{t('skip')}</a
+    >
+    <Navbar lang={lang} path={path} />
+    <div
+      class:list={[
+        'mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6',
+        sidebar && 'md:grid md:grid-cols-[13rem_1fr] md:gap-10',
+      ]}
+    >
+      {sidebar && <Sidebar lang={lang} />}
+      <main id="main" class="min-w-0">
+        {
+          title && (
+            <header class="mb-6">
+              <h1 class="text-2xl">{title}</h1>
+              {description && <p class="meta mt-1 text-sm">{description}</p>}
+            </header>
+          )
+        }
+        <slot />
+      </main>
+    </div>
+    <Footer lang={lang} />
+  </body>
+</html>

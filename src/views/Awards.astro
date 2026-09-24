@@ -1,0 +1,119 @@
+---
+import { awards, certifications } from '../data';
+import Base from '../layouts/Base.astro';
+import type { Lang } from '../i18n/ui';
+import { asset, available, formatMonth, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const certs = [...certifications].sort((a, b) => Number(b.featured) - Number(a.featured));
+---
+
+<Base lang={lang} path="/awards/" title={t('awards.title')} description={t('awards.desc')}>
+  <section class="mb-10">
+    <h2 class="section-title">{t('awards.awards')}</h2>
+    <ul class="space-y-3">
+      {
+        awards.map((a) => (
+          <li class="grid gap-x-4 sm:grid-cols-[5.5rem_1fr]">
+            <time class="meta pt-0.5" datetime={a.date}>
+              {formatMonth(a.date, lang)}
+            </time>
+            <div>
+              <p class="font-semibold text-stone-900 dark:text-slate-100">{a.title[lang]}</p>
+              <p class="text-sm">{a.issuer}</p>
+              {a.details[lang] && <p class="text-sm text-stone-600 dark:text-slate-400">{a.details[lang]}</p>}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="section-title">{t('awards.certs')}</h2>
+    <ul class="grid gap-4 sm:grid-cols-2">
+      {
+        certs.map((c) => {
+          const thumb = available(c.thumbnail);
+          const pdf = available(c.pdf);
+          return (
+            <li class="flex flex-col overflow-hidden rounded border border-stone-200 dark:border-slate-700">
+              {thumb ? (
+                <button
+                  type="button"
+                  class="block aspect-[1.414] w-full cursor-zoom-in border-b border-stone-200 bg-stone-50 dark:border-slate-700 dark:bg-slate-900"
+                  data-cert-open={c.id}
+                  aria-label={`${t('cert.preview')}: ${c.title}`}
+                >
+                  <img src={asset(c.thumbnail)} alt="" loading="lazy" class="size-full object-contain" />
+                </button>
+              ) : (
+                <div class="flex aspect-[3] items-center justify-center border-b border-stone-200 bg-stone-50 px-4 text-center font-mono text-xs text-stone-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
+                  {c.issuer}
+                </div>
+              )}
+              <div class="flex flex-1 flex-col p-3">
+                <p class="leading-snug font-semibold text-stone-900 dark:text-slate-100">{c.title}</p>
+                <p class="text-sm">{c.issuer}</p>
+                <p class="meta mt-0.5">
+                  {formatMonth(c.date, lang)}
+                  {c.credentialId && (
+                    <>
+                      {' · '}
+                      {t('cert.id')}: {c.credentialId}
+                    </>
+                  )}
+                </p>
+                {c.skills.length > 0 && (
+                  <p class="mt-2 flex flex-wrap gap-1">
+                    {c.skills.map((s) => (
+                      <span class="tag">{s}</span>
+                    ))}
+                  </p>
+                )}
+                {(pdf || c.verifyUrl) && (
+                  <p class="mt-auto flex gap-1.5 pt-3">
+                    {pdf && (
+                      <a class="badge" href={asset(c.pdf)} target="_blank" rel="noopener noreferrer">
+                        {t('cert.pdf')}
+                      </a>
+                    )}
+                    {c.verifyUrl && (
+                      <a class="badge" href={c.verifyUrl} target="_blank" rel="noopener noreferrer">
+                        {t('cert.verify')} ↗
+                      </a>
+                    )}
+                  </p>
+                )}
+              </div>
+              {thumb && (
+                <dialog
+                  id={`cert-${c.id}`}
+                  class="m-auto max-h-[90vh] max-w-3xl rounded border border-stone-300 bg-white p-0 backdrop:bg-black/60 dark:border-slate-600 dark:bg-slate-900"
+                >
+                  <form method="dialog" class="flex justify-end p-2">
+                    <button class="badge">{t('cert.close')}</button>
+                  </form>
+                  <img src={asset(c.thumbnail)} alt={c.title} class="max-h-[80vh] w-full object-contain" />
+                </dialog>
+              )}
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</Base>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-cert-open]').forEach((btn) => {
+    const dialog = document.getElementById(`cert-${btn.dataset.certOpen}`) as HTMLDialogElement | null;
+    btn.addEventListener('click', () => dialog?.showModal());
+    dialog?.addEventListener('click', (e) => e.target === dialog && dialog.close());
+  });
+</script>

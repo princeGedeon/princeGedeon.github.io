@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2025-09",
+    "title": { "en": "MIAI Excellence Scholarship", "fr": "Bourse d'excellence MIAI" },
+    "issuer": "Multidisciplinary Institute in Artificial Intelligence (MIAI)",
+    "details": { "en": "Merit-based scholarship for the Master 2 year.", "fr": "Bourse au mérite pour l'année de Master 2." }
+  },
+  {
+    "date": "2025-08",
+    "title": { "en": "Ranked 1st in class — Master 1 Computer Science (AI)", "fr": "Major de promotion — Master 1 Informatique (IA)" },
+    "issuer": "Université Clermont Auvergne",
+    "details": { "en": "", "fr": "" }
+  },
+  {
+    "date": "2023-12",
+    "title": { "en": "Ranked 1st in class — Bachelor in Computer Engineering", "fr": "Major de promotion — Licence en Génie Informatique" },
+    "issuer": "IFRI, Université d'Abomey-Calavi",
+    "details": { "en": "", "fr": "" }
+  }
+]

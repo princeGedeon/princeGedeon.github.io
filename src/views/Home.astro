@@ -1,0 +1,77 @@
+---
+import PublicationItem from '../components/PublicationItem.astro';
+import { news, profile } from '../data';
+import Base from '../layouts/Base.astro';
+import { publications } from '../lib/publications';
+import type { Lang } from '../i18n/ui';
+import { formatMonth, localizePath, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const selected = publications.filter((p) => p.selected);
+---
+
+<Base lang={lang} path="/">
+  <section class="prose-tight">
+    <ul class="mb-5 flex flex-wrap gap-1.5" aria-label={t('home.interests')}>
+      {profile.pillars.map((p) => <li class="tag">{p[lang]}</li>)}
+    </ul>
+    {profile.bio[lang].map((para) => <p set:html={para} />)}
+  </section>
+
+  <section class="mt-8">
+    <h2 class="section-title">{t('home.interests')}</h2>
+    <ul class="list-disc space-y-1 pl-5 text-sm">
+      {
+        profile.researchInterests.map((i) => (
+          <li>
+            <span class="font-medium">{i[lang]}</span>
+            {i.children && (
+              <ul class="mt-0.5 list-[circle] pl-5 text-stone-600 dark:text-slate-400">
+                {i.children.map((c) => (
+                  <li>{c[lang]}</li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-8">
+    <h2 class="section-title">{t('home.news')}</h2>
+    <ul class="space-y-2 text-sm">
+      {
+        news.map((n) => (
+          <li class="grid gap-x-4 sm:grid-cols-[5.5rem_1fr]">
+            <time class="meta pt-0.5" datetime={n.date}>
+              {formatMonth(n.date, lang)}
+            </time>
+            <span set:html={n[lang]} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  {
+    selected.length > 0 && (
+      <section class="mt-8">
+        <h2 class="section-title">{t('home.selected')}</h2>
+        <ol class="space-y-5">
+          {selected.map((pub) => (
+            <PublicationItem pub={pub} lang={lang} />
+          ))}
+        </ol>
+        <p class="mt-4 text-sm">
+          <a href={localizePath('/publications/', lang)}>{t('home.allPubs')} →</a>
+        </p>
+      </section>
+    )
+  }
+</Base>

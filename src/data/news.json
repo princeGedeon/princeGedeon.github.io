@@ -1,0 +1,22 @@
+[
+  {
+    "date": "2026-08",
+    "en": "Completed my ML R&D internship at <strong>bioMérieux</strong> and defended my internship thesis on multimodal document-parsing pipelines (VLMs, agentic orchestration).",
+    "fr": "Fin de mon stage de R&D ML chez <strong>bioMérieux</strong> et soutenance de mon mémoire de stage sur les pipelines d'analyse de documents multimodaux (VLM, orchestration agentique)."
+  },
+  {
+    "date": "2026-05",
+    "en": "Presented my master's research on <strong>multi-UAV 3D urban mapping under constraints</strong> with MARL and ROS 2.",
+    "fr": "Présentation de mes travaux de Master sur la <strong>cartographie 3D urbaine multi-drones sous contraintes</strong> par MARL et ROS 2."
+  },
+  {
+    "date": "2025-09",
+    "en": "Awarded the <strong>MIAI Excellence Scholarship</strong> (Multidisciplinary Institute in Artificial Intelligence).",
+    "fr": "Lauréat de la <strong>bourse d'excellence MIAI</strong> (Multidisciplinary Institute in Artificial Intelligence)."
+  },
+  {
+    "date": "2024-12",
+    "en": "Our paper <strong>NextVision: An Intelligent Video Surveillance System</strong> was published at ICICT 2024 (Springer, London).",
+    "fr": "Notre article <strong>NextVision : un système de vidéosurveillance intelligent</strong> a été publié à ICICT 2024 (Springer, Londres)."
+  }
+]

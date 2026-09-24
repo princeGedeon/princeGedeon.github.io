@@ -1,0 +1,29 @@
+---
+import EmailLink from '../components/EmailLink.astro';
+import SocialIcons from '../components/SocialIcons.astro';
+import { profile } from '../data';
+import Base from '../layouts/Base.astro';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Base lang={lang} path="/contact/" title={t('contact.title')} description={t('contact.desc')}>
+  <p>{profile.seeking[lang]}</p>
+  <p class="mt-3">{t('contact.intro')}</p>
+  <div class="mt-3">
+    <EmailLink lang={lang} />
+  </div>
+  <p class="meta mt-3">{profile.affiliation[lang]} · {profile.location[lang]}</p>
+
+  <section class="mt-8">
+    <h2 class="section-title">{t('contact.elsewhere')}</h2>
+    <SocialIcons lang={lang} variant="list" />
+  </section>
+</Base>
