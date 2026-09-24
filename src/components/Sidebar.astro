@@ -3,6 +3,8 @@ import { profile } from '../data';
 import type { Lang } from '../i18n/ui';
 import { asset, available, useTranslations } from '../i18n/utils';
 import SocialIcons from './SocialIcons.astro';
+import GradIcon from '~icons/fa-solid/graduation-cap';
+import PinIcon from '~icons/fa-solid/map-marker-alt';
 
 interface Props {
   lang: Lang;
@@ -42,8 +44,14 @@ const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
     <div class="md:mt-4">
       <p class="font-semibold text-stone-900 dark:text-slate-100">{profile.name}</p>
       <p class="mt-1 text-sm leading-snug text-balance [hyphens:none]">{profile.headline[lang]}</p>
-      <p class="meta mt-2">{profile.affiliation[lang]}</p>
-      <p class="meta">{profile.location[lang]}</p>
+      <p class="meta mt-2 flex items-start gap-1.5">
+        <GradIcon class="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
+        <span>{profile.affiliation[lang]}</span>
+      </p>
+      <p class="meta mt-0.5 flex items-start gap-1.5">
+        <PinIcon class="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
+        <span>{profile.location[lang]}</span>
+      </p>
     </div>
   </div>
 
