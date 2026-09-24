@@ -19,15 +19,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - name: Build with Astro
-        uses: withastro/action@v5
+      - run: corepack enable
+      - uses: actions/setup-node@v5
         with:
-          node-version: 24
-          package-manager: yarn@4.13.0
+          node-version: '24'
+          cache: yarn
+      - run: yarn install --immutable
+      - name: Build with Astro
+        run: yarn build
         env:
           # Optional repository variables (Settings → Secrets and variables → Actions → Variables).
           ASTRO_SITE: ${{ vars.ASTRO_SITE || 'https://princegedeon.github.io' }}
           ASTRO_BASE: ${{ vars.ASTRO_BASE || '/' }}
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
 
   deploy:
     needs: build
