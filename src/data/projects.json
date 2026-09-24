@@ -26,6 +26,7 @@
     },
     "tags": ["MAPPO", "Safe RL", "CBF", "Dec-POMDP", "ROS 2", "Gazebo", "OctoMap", "PyTorch", "Python"],
     "repo": "",
+    "pdf": "/papers/master-thesis-guedje-2026.pdf",
     "figure": "/projects/marl-uav-mapping.png",
     "video": ""
   },

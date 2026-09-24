@@ -80,6 +80,9 @@ export const ui = {
     'teaching.noMaterials': 'Materials will be available soon.',
     'teaching.back': 'All courses',
     'teaching.details': 'Course page',
+  'teaching.taughtIn': 'Taught in',
+  'teaching.lang.en': 'English',
+  'teaching.lang.fr': 'French',
 
     'cv.title': 'Curriculum Vitae',
     'cv.desc': 'Education, experience and skills.',
@@ -170,6 +173,9 @@ export const ui = {
     'teaching.noMaterials': 'Les supports seront bientôt disponibles.',
     'teaching.back': 'Tous les cours',
     'teaching.details': 'Page du cours',
+  'teaching.taughtIn': 'Enseigné en',
+  'teaching.lang.en': 'anglais',
+  'teaching.lang.fr': 'français',
 
     'cv.title': 'Curriculum Vitae',
     'cv.desc': 'Formation, expériences et compétences.',

@@ -10,6 +10,7 @@
     "date": "2025-02",
     "hours": 28,
     "level": { "en": "Graduate students", "fr": "Étudiants de Master" },
+    "language": ["fr"],
     "summary": {
       "en": "A hands-on course taking students from classical CNNs to Vision Transformers, applied to recognizing emotions from face images.",
       "fr": "Un cours pratique menant des CNN classiques aux Vision Transformers, appliqué à la reconnaissance d'émotions sur des images de visages."
@@ -31,8 +32,7 @@
       ]
     },
     "materials": [
-      { "label": { "en": "Slides", "fr": "Diapositives" }, "url": "/teaching/hexagone-fer-2025/slides.pdf" },
-      { "label": { "en": "Notebooks", "fr": "Notebooks" }, "url": "/teaching/hexagone-fer-2025/notebooks.zip" }
+      { "label": { "en": "Slides (PDF)", "fr": "Diapositives (PDF)" }, "url": "/teaching/hexagone-fer-2025/slides.pdf" }
     ]
   }
 ]

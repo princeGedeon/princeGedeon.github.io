@@ -59,6 +59,15 @@ const profileSchema = z.object({
   volunteering: z.array(z.object({ organization: z.string(), details: L })),
   languages: z.array(L),
   references: L,
+  seo: z
+    .object({
+      /** Search keywords for <meta name="keywords">. */
+      keywords: z.array(z.string()).default([]),
+      /** Google Search Console verification code (leave empty to disable). */
+      googleVerification: z.string().default(''),
+      alumniOf: z.array(z.string()).default([]),
+    })
+    .default({ keywords: [], googleVerification: '', alumniOf: [] }),
 });
 
 const newsSchema = z.array(z.object({ date: Month, en: z.string(), fr: z.string() }));
@@ -75,6 +84,8 @@ const projectsSchema = z.array(
     tags: z.array(z.string()),
     repo: z.string().default(''),
     paper: z.string().optional(),
+    /** Local path or URL to a PDF (thesis, report). */
+    pdf: z.string().default(''),
     figure: z.string().default(''),
     video: z.string().default(''),
   }),
@@ -106,6 +117,8 @@ const teachingSchema = z.array(
     date: Month,
     hours: z.number().optional(),
     level: L,
+    /** Language(s) the course was taught in, e.g. ["fr"] or ["en"]. */
+    language: z.array(z.enum(['en', 'fr'])).default([]),
     summary: L,
     syllabus: LList,
     materials: z.array(z.object({ label: L, url: z.string() })),

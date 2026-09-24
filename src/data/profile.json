@@ -14,7 +14,10 @@
     "fr": "Lyon / Clermont-Ferrand, France"
   },
   "photo": "/img/prince.jpg",
-  "email": { "user": "guedjegedeon03", "domain": "gmail.com" },
+  "email": {
+    "user": "guedjegedeon03",
+    "domain": "gmail.com"
+  },
   "seeking": {
     "en": "I am looking for a PhD position in multi-agent / safe reinforcement learning and autonomous robotics.",
     "fr": "Je recherche un doctorat en apprentissage par renforcement multi-agents / sûr et en robotique autonome."
@@ -24,80 +27,157 @@
     "fr": "/cv/CV_Prince_Guedje_FR.pdf"
   },
   "socials": [
-    { "id": "email", "label": "Email", "url": "", "enabled": true },
-    { "id": "googlescholar", "label": "Google Scholar", "url": "", "enabled": false },
-    { "id": "github", "label": "GitHub", "url": "https://github.com/princeGedeon", "enabled": true },
-    { "id": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/prince-gedeon-guedje-ai-researcher/", "enabled": true },
-    { "id": "orcid", "label": "ORCID", "url": "https://orcid.org/0009-0006-2370-2197", "enabled": true },
-    { "id": "arxiv", "label": "arXiv", "url": "", "enabled": false },
-    { "id": "x", "label": "X", "url": "", "enabled": false },
-    { "id": "instagram", "label": "Instagram", "url": "", "enabled": false }
+    {
+      "id": "email",
+      "label": "Email",
+      "url": "",
+      "enabled": true
+    },
+    {
+      "id": "googlescholar",
+      "label": "Google Scholar",
+      "url": "",
+      "enabled": false
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "url": "https://github.com/princeGedeon",
+      "enabled": true
+    },
+    {
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/prince-gedeon-guedje-ai-researcher/",
+      "enabled": true
+    },
+    {
+      "id": "orcid",
+      "label": "ORCID",
+      "url": "https://orcid.org/0009-0006-2370-2197",
+      "enabled": true
+    },
+    {
+      "id": "arxiv",
+      "label": "arXiv",
+      "url": "",
+      "enabled": false
+    },
+    {
+      "id": "x",
+      "label": "X",
+      "url": "",
+      "enabled": false
+    },
+    {
+      "id": "instagram",
+      "label": "Instagram",
+      "url": "",
+      "enabled": false
+    }
   ],
   "bio": {
     "en": [
-      "I am an AI & robotics researcher and a Master's graduate in Computer Science (Artificial Intelligence & Optimization) from <strong>Université Clermont Auvergne</strong>, France, where I held the <strong>MIAI Excellence Scholarship</strong> and ranked first in my Master 1 class. Before that, I graduated first in my class with a Bachelor in Computer Engineering from <strong>IFRI, Université d'Abomey-Calavi</strong> (Benin).",
-      "My research focuses on <strong>safe multi-agent reinforcement learning</strong> for autonomous systems. In my master's thesis, I study decentralized coordination of UAV swarms for 3D urban mapping, formulated as a Dec-POMDP under energy, communication and no-fly-zone constraints, using Lagrangian MAPPO and Control Barrier Functions in a ROS 2 / Gazebo stack. I am also interested in how multimodal (vision-language-action) foundation models can ground robot decision-making.",
-      "On the industry side, I designed a multi-agent architecture for multimodal document-parsing pipelines as an ML R&D intern at <strong>bioMérieux</strong>. I am currently <strong>seeking a PhD position</strong> in multi-agent / safe RL and autonomous robotics."
+      "I am an AI & robotics researcher working on <strong>safe multi-agent reinforcement learning</strong> for autonomous systems, with an M.Sc. in AI & Optimization from <strong>Universit? Clermont Auvergne</strong> (MIAI Excellence Scholarship).",
+      "My master's thesis studies decentralized coordination of UAV swarms for 3D urban mapping under energy and communication constraints. I am currently <strong>seeking a PhD position</strong>."
     ],
     "fr": [
-      "Je suis chercheur en IA et robotique, diplômé d'un Master en Informatique (Intelligence Artificielle & Optimisation) de l'<strong>Université Clermont Auvergne</strong>, où j'ai bénéficié de la <strong>bourse d'excellence MIAI</strong> et terminé major de promotion en Master 1. Auparavant, j'ai obtenu ma Licence en Génie Informatique à l'<strong>IFRI, Université d'Abomey-Calavi</strong> (Bénin), également major de promotion.",
-      "Mes recherches portent sur l'<strong>apprentissage par renforcement multi-agents sûr</strong> pour les systèmes autonomes. Dans mon mémoire de Master, j'étudie la coordination décentralisée d'essaims de drones pour la cartographie 3D urbaine, formulée comme un Dec-POMDP sous contraintes d'énergie, de communication et de zones interdites, avec MAPPO lagrangien et Control Barrier Functions dans un environnement ROS 2 / Gazebo. Je m'intéresse aussi à la manière dont les modèles de fondation multimodaux (vision-langage-action) peuvent guider la prise de décision robotique.",
-      "Côté industrie, j'ai conçu une architecture multi-agents pour des pipelines d'analyse de documents multimodaux lors de mon stage de R&D ML chez <strong>bioMérieux</strong>. Je suis actuellement <strong>à la recherche d'un doctorat</strong> en RL multi-agents / sûr et en robotique autonome."
+      "Je suis chercheur en IA et robotique, sp?cialis? en <strong>apprentissage par renforcement multi-agents s?r</strong> pour les syst?mes autonomes, dipl?m? d'un Master IA & Optimisation de l'<strong>Universit? Clermont Auvergne</strong> (bourse d'excellence MIAI).",
+      "Mon m?moire de Master porte sur la coordination d?centralis?e d'essaims de drones pour la cartographie 3D urbaine sous contraintes d'?nergie et de communication. Je suis actuellement <strong>? la recherche d'un doctorat</strong>."
     ]
   },
   "pillars": [
-    { "en": "Multi-Agent & Safe RL", "fr": "RL multi-agents & sûr" },
-    { "en": "Autonomous & Swarm Robotics", "fr": "Robotique autonome & essaims" },
-    { "en": "Multimodal Foundation Models", "fr": "Modèles de fondation multimodaux" }
+    {
+      "en": "Multi-Agent & Safe RL",
+      "fr": "RL multi-agents & sûr"
+    },
+    {
+      "en": "Autonomous & Swarm Robotics",
+      "fr": "Robotique autonome & essaims"
+    },
+    {
+      "en": "Multimodal Foundation Models",
+      "fr": "Modèles de fondation multimodaux"
+    }
   ],
   "researchInterests": [
     {
       "en": "Multi-Agent Reinforcement Learning",
       "fr": "Apprentissage par renforcement multi-agents",
       "children": [
-        { "en": "Decentralized coordination (Dec-POMDP, CTDE)", "fr": "Coordination décentralisée (Dec-POMDP, CTDE)" },
-        { "en": "Cooperative AI", "fr": "IA coopérative" }
+        {
+          "en": "Decentralized coordination (Dec-POMDP, CTDE)",
+          "fr": "Coordination décentralisée (Dec-POMDP, CTDE)"
+        },
+        {
+          "en": "Cooperative AI",
+          "fr": "IA coopérative"
+        }
       ]
     },
     {
       "en": "Safe Reinforcement Learning",
       "fr": "Apprentissage par renforcement sûr",
       "children": [
-        { "en": "Constrained policy optimization (Lagrangian relaxation)", "fr": "Optimisation de politiques sous contraintes (relaxation lagrangienne)" },
-        { "en": "Control Barrier Functions", "fr": "Control Barrier Functions" }
+        {
+          "en": "Constrained policy optimization (Lagrangian relaxation)",
+          "fr": "Optimisation de politiques sous contraintes (relaxation lagrangienne)"
+        },
+        {
+          "en": "Control Barrier Functions",
+          "fr": "Control Barrier Functions"
+        }
       ]
     },
     {
       "en": "Autonomous Robotics",
       "fr": "Robotique autonome",
       "children": [
-        { "en": "Multi-UAV exploration & 3D mapping", "fr": "Exploration multi-drones & cartographie 3D" },
-        { "en": "Human-aware navigation", "fr": "Navigation tenant compte de l'humain" }
+        {
+          "en": "Multi-UAV exploration & 3D mapping",
+          "fr": "Exploration multi-drones & cartographie 3D"
+        },
+        {
+          "en": "Human-aware navigation",
+          "fr": "Navigation tenant compte de l'humain"
+        }
       ]
     },
     {
       "en": "Multimodal Foundation Models",
       "fr": "Modèles de fondation multimodaux",
       "children": [
-        { "en": "VLM-based document understanding", "fr": "Compréhension de documents par VLM" },
-        { "en": "Vision-Language-Action models", "fr": "Modèles vision-langage-action" }
+        {
+          "en": "VLM-based document understanding",
+          "fr": "Compréhension de documents par VLM"
+        },
+        {
+          "en": "Vision-Language-Action models",
+          "fr": "Modèles vision-langage-action"
+        }
       ]
     },
-    { "en": "Computer Vision", "fr": "Vision par ordinateur" }
+    {
+      "en": "Computer Vision",
+      "fr": "Vision par ordinateur"
+    }
   ],
   "education": [
     {
       "period": "Sep 2025 – Aug 2026",
-      "degree": { "en": "Master 2 in International Computer Science — AI & Optimization", "fr": "Master 2 Informatique internationale — IA & Optimisation" },
+      "degree": {
+        "en": "Master 2 in International Computer Science — AI & Optimization",
+        "fr": "Master 2 Informatique internationale — IA & Optimisation"
+      },
       "institution": "Université Clermont Auvergne, France",
       "details": {
         "en": [
-          "Thesis: <em>Multi-Agent Reinforcement Learning for 3D Urban Environment Mapping under Energy and Communication Constraints</em>",
+          "Thesis: <em>Multi-Agent Reinforcement Learning for 3D Urban Environment Mapping under Energy and Communication Constraints</em> ? <a href=\"/papers/master-thesis-guedje-2026.pdf\" target=\"_blank\" rel=\"noopener\">PDF</a>",
           "MIAI Excellence Scholarship",
           "Courses: Reinforcement Learning, Robotics Perception, Multi-Agent Systems, Stochastic Optimization, Autonomous Systems, Complexity"
         ],
         "fr": [
-          "Mémoire : <em>Apprentissage par renforcement multi-agents pour la cartographie 3D d'environnements urbains sous contraintes d'énergie et de communication</em>",
+          "Mémoire : <em>Apprentissage par renforcement multi-agents pour la cartographie 3D d'environnements urbains sous contraintes d'énergie et de communication</em> ? <a href=\"/papers/master-thesis-guedje-2026.pdf\" target=\"_blank\" rel=\"noopener\">PDF</a>",
           "Bourse d'excellence MIAI",
           "Cours : apprentissage par renforcement, perception robotique, systèmes multi-agents, optimisation stochastique, systèmes autonomes, complexité"
         ]
@@ -105,16 +185,28 @@
     },
     {
       "period": "Sep 2024 – Aug 2025",
-      "degree": { "en": "Master 1 in Computer Science — Artificial Intelligence", "fr": "Master 1 Informatique — Intelligence Artificielle" },
+      "degree": {
+        "en": "Master 1 in Computer Science — Artificial Intelligence",
+        "fr": "Master 1 Informatique — Intelligence Artificielle"
+      },
       "institution": "Université Clermont Auvergne, France",
       "details": {
-        "en": ["Ranked 1st in class", "Courses: Deep Learning, Advanced Data Analysis, Algorithms, Databases, Software Engineering"],
-        "fr": ["Major de promotion", "Cours : deep learning, analyse de données avancée, algorithmique, bases de données, génie logiciel"]
+        "en": [
+          "Ranked 1st in class",
+          "Courses: Deep Learning, Advanced Data Analysis, Algorithms, Databases, Software Engineering"
+        ],
+        "fr": [
+          "Major de promotion",
+          "Cours : deep learning, analyse de données avancée, algorithmique, bases de données, génie logiciel"
+        ]
       }
     },
     {
       "period": "Oct 2020 – Dec 2023",
-      "degree": { "en": "Bachelor in Computer Engineering", "fr": "Licence en Génie Informatique" },
+      "degree": {
+        "en": "Bachelor in Computer Engineering",
+        "fr": "Licence en Génie Informatique"
+      },
       "institution": "IFRI, Université d'Abomey-Calavi, Benin",
       "details": {
         "en": [
@@ -133,37 +225,61 @@
   "experience": [
     {
       "period": "Mar 2026 – Aug 2026",
-      "role": { "en": "ML R&D Engineer Intern", "fr": "Stagiaire ingénieur R&D ML" },
+      "role": {
+        "en": "ML R&D Engineer Intern",
+        "fr": "Stagiaire ingénieur R&D ML"
+      },
       "organization": "bioMérieux",
       "location": "Marcy-l'Étoile (Lyon), France",
       "details": {
-        "en": ["Designed a multi-agent architecture for multimodal AI pipelines that convert unstructured visual and textual documents into structured, usable data, building on state-of-the-art foundation models (VLMs, LLMs)."],
-        "fr": ["Conception d'une architecture multi-agents pour des pipelines d'IA multimodale convertissant des documents visuels et textuels non structurés en données structurées exploitables, à partir de modèles de fondation de l'état de l'art (VLM, LLM)."]
+        "en": [
+          "Designed a multi-agent architecture for multimodal AI pipelines that convert unstructured visual and textual documents into structured, usable data, building on state-of-the-art foundation models (VLMs, LLMs)."
+        ],
+        "fr": [
+          "Conception d'une architecture multi-agents pour des pipelines d'IA multimodale convertissant des documents visuels et textuels non structurés en données structurées exploitables, à partir de modèles de fondation de l'état de l'art (VLM, LLM)."
+        ]
       }
     },
     {
       "period": "May 2025 – Aug 2025",
-      "role": { "en": "AI Developer Intern", "fr": "Stagiaire développeur IA" },
+      "role": {
+        "en": "AI Developer Intern",
+        "fr": "Stagiaire développeur IA"
+      },
       "organization": "L'AGENTX",
       "location": "Croix (Lille), France",
       "details": {
-        "en": ["Designed and deployed multi-agent LLM systems (CrewAI, LangChain) with embeddings and vector databases for automated technical documentation and complex document processing."],
-        "fr": ["Conception et déploiement de systèmes multi-agents LLM (CrewAI, LangChain) avec embeddings et bases vectorielles pour la documentation technique automatisée et le traitement de documents complexes."]
+        "en": [
+          "Designed and deployed multi-agent LLM systems (CrewAI, LangChain) with embeddings and vector databases for automated technical documentation and complex document processing."
+        ],
+        "fr": [
+          "Conception et déploiement de systèmes multi-agents LLM (CrewAI, LangChain) avec embeddings et bases vectorielles pour la documentation technique automatisée et le traitement de documents complexes."
+        ]
       }
     },
     {
       "period": "Feb 2025 (28 h)",
-      "role": { "en": "Visiting Instructor", "fr": "Chargé de cours" },
+      "role": {
+        "en": "Visiting Instructor",
+        "fr": "Chargé de cours"
+      },
       "organization": "Hexagone School",
       "location": "Clermont-Ferrand, France",
       "details": {
-        "en": ["Taught a 28-hour course on deep learning for facial emotion recognition: computer vision, transfer learning and Vision Transformers."],
-        "fr": ["Cours de 28 h sur le deep learning appliqué à la reconnaissance d'émotions faciales : vision par ordinateur, transfer learning et Vision Transformers."]
+        "en": [
+          "Taught a 28-hour course on deep learning for facial emotion recognition: computer vision, transfer learning and Vision Transformers."
+        ],
+        "fr": [
+          "Cours de 28 h sur le deep learning appliqué à la reconnaissance d'émotions faciales : vision par ordinateur, transfer learning et Vision Transformers."
+        ]
       }
     },
     {
       "period": "Nov 2023 – Aug 2024",
-      "role": { "en": "Junior Data Scientist", "fr": "Data scientist junior" },
+      "role": {
+        "en": "Junior Data Scientist",
+        "fr": "Data scientist junior"
+      },
       "organization": "WIM — Workinmusic",
       "location": "Montpellier, France (remote)",
       "details": {
@@ -188,11 +304,37 @@
     }
   ],
   "languages": [
-    { "en": "French (fluent)", "fr": "Français (courant)" },
-    { "en": "English (professional)", "fr": "Anglais (professionnel)" }
+    {
+      "en": "French (fluent)",
+      "fr": "Français (courant)"
+    },
+    {
+      "en": "English (professional)",
+      "fr": "Anglais (professionnel)"
+    }
   ],
   "references": {
     "en": "References (Prof. Engelbert Mephu Nguifo, Dr. Viet Hung Nguyen — LIMOS, UCA) available upon request.",
     "fr": "Références (Pr Engelbert Mephu Nguifo, Dr Viet Hung Nguyen — LIMOS, UCA) disponibles sur demande."
+  },
+  "seo": {
+    "keywords": [
+      "Prince G?d?on Guedje",
+      "multi-agent reinforcement learning",
+      "safe reinforcement learning",
+      "MARL",
+      "robotics",
+      "UAV swarm",
+      "autonomous systems",
+      "AI researcher",
+      "PhD candidate",
+      "Universit? Clermont Auvergne",
+      "LIMOS"
+    ],
+    "googleVerification": "",
+    "alumniOf": [
+      "Universit? Clermont Auvergne",
+      "IFRI, Universit? d'Abomey-Calavi"
+    ]
   }
 }

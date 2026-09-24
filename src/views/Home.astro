@@ -1,10 +1,11 @@
 ---
 import PublicationItem from '../components/PublicationItem.astro';
+import SocialIcons from '../components/SocialIcons.astro';
 import { news, profile } from '../data';
 import Base from '../layouts/Base.astro';
 import { publications } from '../lib/publications';
 import type { Lang } from '../i18n/ui';
-import { formatMonth, localizePath, useTranslations } from '../i18n/utils';
+import { asset, available, formatMonth, localizePath, useTranslations } from '../i18n/utils';
 
 interface Props {
   lang: Lang;
@@ -13,37 +14,60 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const selected = publications.filter((p) => p.selected);
+const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
 ---
 
-<Base lang={lang} path="/">
-  <section class="prose-tight">
-    <ul class="mb-5 flex flex-wrap gap-1.5" aria-label={t('home.interests')}>
+<Base lang={lang} path="/" sidebar={false}>
+  <section class="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-8">
+    {
+      available(profile.photo) && (
+        <img
+          src={asset(profile.photo)}
+          alt={profile.name}
+          width="176"
+          height="176"
+          class="size-36 shrink-0 rounded-full border border-stone-200 object-cover sm:size-44 dark:border-slate-700"
+        />
+      )
+    }
+    <div>
+      <h1 class="text-3xl sm:text-4xl">{profile.name}</h1>
+      <p class="mt-1 text-lg text-stone-700 dark:text-slate-300">{profile.headline[lang]}</p>
+      <p class="meta mt-1">
+        {profile.affiliation[lang]} · {profile.location[lang]}
+      </p>
+      <div class="mt-3 flex flex-wrap items-center gap-3">
+        <SocialIcons lang={lang} />
+        {
+          cvs.map((l) => (
+            <a class="badge" href={asset(profile.cv[l])} download title={t('cv.download')}>
+              CV · {l.toUpperCase()}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <p class="mt-6 rounded border-l-2 border-accent bg-blue-50/60 px-4 py-2 text-sm dark:border-accent-dark dark:bg-slate-800/60">
+    {profile.seeking[lang]}
+  </p>
+
+  <section class="prose-tight mt-6">
+    {profile.bio[lang].map((para) => <p set:html={para} />)}
+    <ul class="mt-4 flex flex-wrap gap-1.5" aria-label={t('home.interests')}>
       {profile.pillars.map((p) => <li class="tag">{p[lang]}</li>)}
     </ul>
-    {profile.bio[lang].map((para) => <p set:html={para} />)}
   </section>
 
-  <section class="mt-8">
+  <section class="mt-10">
     <h2 class="section-title">{t('home.interests')}</h2>
-    <ul class="list-disc space-y-1 pl-5 text-sm">
-      {
-        profile.researchInterests.map((i) => (
-          <li>
-            <span class="font-medium">{i[lang]}</span>
-            {i.children && (
-              <ul class="mt-0.5 list-[circle] pl-5 text-stone-600 dark:text-slate-400">
-                {i.children.map((c) => (
-                  <li>{c[lang]}</li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))
-      }
+    <ul class="grid gap-x-8 gap-y-1 pl-5 text-sm sm:grid-cols-2 list-disc">
+      {profile.researchInterests.map((i) => <li>{i[lang]}</li>)}
     </ul>
   </section>
 
-  <section class="mt-8">
+  <section class="mt-10">
     <h2 class="section-title">{t('home.news')}</h2>
     <ul class="space-y-2 text-sm">
       {

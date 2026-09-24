@@ -143,6 +143,9 @@ export function getVenue(entry: BibEntry): string {
     entry.fields.booktitle ??
     entry.fields.publisher ??
     entry.fields.howpublished ??
+    (entry.fields.school && entry.type.toLowerCase() === 'mastersthesis'
+      ? `Master's thesis, ${entry.fields.school}`
+      : entry.fields.school) ??
     ''
   );
 }

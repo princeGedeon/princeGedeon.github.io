@@ -10,34 +10,47 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const years = [...new Set(teaching.map((c) => c.date.slice(0, 4)))];
+const taughtIn = (langs: ('en' | 'fr')[]) =>
+  langs.length ? `${t('teaching.taughtIn')} ${langs.map((l) => t(`teaching.lang.${l}`)).join(' / ')}` : '';
 ---
 
 <Base lang={lang} path="/teaching/" title={t('teaching.title')} description={t('teaching.desc')}>
-  <ul class="space-y-5">
-    {
-      teaching.map((c) => (
-        <li class="grid gap-x-4 sm:grid-cols-[5.5rem_1fr]">
-          <time class="meta pt-0.5" datetime={c.date}>
-            {formatMonth(c.date, lang)}
-          </time>
-          <div>
-            <a
-              href={localizePath(`/teaching/${c.id}/`, lang)}
-              class="font-semibold text-stone-900 dark:text-slate-100"
-            >
-              {c.title[lang]}
-            </a>
-            <p class="text-sm">
-              {c.role[lang]} · {c.institution}
-            </p>
-            <p class="meta">
-              {c.level[lang]}
-              {c.hours && ` · ${c.hours} ${t('teaching.hours')}`}
-            </p>
-            <p class="mt-1 text-sm">{c.summary[lang]}</p>
-          </div>
-        </li>
-      ))
-    }
-  </ul>
+  {
+    years.map((year) => (
+      <section class="mb-8">
+        <h2 class="section-title">{year}</h2>
+        <ul class="space-y-6">
+          {teaching
+            .filter((c) => c.date.startsWith(year))
+            .map((c) => (
+              <li class="grid gap-x-4 sm:grid-cols-[6rem_1fr]">
+                <time class="meta pt-1" datetime={c.date}>
+                  {formatMonth(c.date, lang)}
+                </time>
+                <div>
+                  <a
+                    href={localizePath(`/teaching/${c.id}/`, lang)}
+                    class="font-semibold text-stone-900 dark:text-slate-100"
+                  >
+                    {c.title[lang]}
+                  </a>
+                  <p class="text-sm">
+                    {c.role[lang]} · {c.institution}
+                  </p>
+                  <p class="mt-1 flex flex-wrap items-center gap-1.5">
+                    {c.language.length > 0 && <span class="tag">{taughtIn(c.language)}</span>}
+                    <span class="meta">
+                      {c.level[lang]}
+                      {c.hours && ` · ${c.hours} ${t('teaching.hours')}`}
+                    </span>
+                  </p>
+                  <p class="mt-2 text-sm">{c.summary[lang]}</p>
+                </div>
+              </li>
+            ))}
+        </ul>
+      </section>
+    ))
+  }
 </Base>

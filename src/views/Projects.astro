@@ -54,6 +54,11 @@ const hasPaper = (p: Project) => !!p.paper && publicationsByKey.has(p.paper);
                 {t('projects.code')}
               </a>
             )}
+            {available(p.pdf) && (
+              <a class="badge" href={asset(p.pdf)} target="_blank" rel="noopener noreferrer">
+                PDF
+              </a>
+            )}
             {available(p.video) && (
               <a class="badge" href={asset(p.video)} target="_blank" rel="noopener noreferrer">
                 {t('projects.video')}

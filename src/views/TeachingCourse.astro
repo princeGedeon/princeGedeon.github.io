@@ -22,9 +22,18 @@ const pdfPreview = materials.find((m) => m.url.endsWith('.pdf'));
   title={course.title[lang]}
   description={`${course.role[lang]} · ${course.institution} · ${formatMonth(course.date, lang, 'long')}`}
 >
-  <p class="meta -mt-4 mb-4">
-    {course.level[lang]}
-    {course.hours && ` · ${course.hours} ${t('teaching.hours')}`}
+  <p class="-mt-4 mb-4 flex flex-wrap items-center gap-1.5">
+    {
+      course.language.length > 0 && (
+        <span class="tag">
+          {t('teaching.taughtIn')} {course.language.map((l) => t(`teaching.lang.${l}`)).join(' / ')}
+        </span>
+      )
+    }
+    <span class="meta">
+      {course.level[lang]}
+      {course.hours && ` · ${course.hours} ${t('teaching.hours')}`}
+    </span>
   </p>
   <p>{course.summary[lang]}</p>
 

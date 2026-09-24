@@ -36,7 +36,12 @@ const jsonLd = {
   '@type': 'Person',
   name: profile.name,
   jobTitle: profile.headline.en,
+  description: profile.seeking.en,
+  image: photo,
   url: new URL(localizePath('/', defaultLang), site).href,
+  affiliation: { '@type': 'Organization', name: profile.affiliation.en },
+  alumniOf: profile.seo.alumniOf.map((name) => ({ '@type': 'CollegeOrUniversity', name })),
+  knowsAbout: profile.pillars.map((p) => p.en),
   sameAs: profile.socials.filter((s) => s.enabled && s.url).map((s) => s.url),
 };
 ---
@@ -49,6 +54,21 @@ const jsonLd = {
     <title>{fullTitle}</title>
     <meta name="description" content={desc} />
     <meta name="author" content={profile.name} />
+    {profile.seo.keywords.length > 0 && <meta name="keywords" content={profile.seo.keywords.join(', ')} />}
+    {
+      profile.seo.googleVerification && (
+        <meta name="google-site-verification" content={profile.seo.googleVerification} />
+      )
+    }
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#1e3a8a" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
     <link rel="canonical" href={canonical} />
     {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
     <link rel="alternate" hreflang="x-default" href={xDefault} />
@@ -58,8 +78,14 @@ const jsonLd = {
     <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={photo} />
+    <meta property="og:image:alt" content={profile.name} />
+    <meta property="og:site_name" content={profile.name} />
     <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
+    <meta property="og:locale:alternate" content={lang === 'fr' ? 'en_US' : 'fr_FR'} />
     <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={photo} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <script is:inline>
       (() => {
@@ -87,7 +113,7 @@ const jsonLd = {
         {
           title && (
             <header class="mb-6">
-              <h1 class="text-2xl">{title}</h1>
+              <h1 class="text-3xl">{title}</h1>
               {description && <p class="meta mt-1 text-sm">{description}</p>}
             </header>
           )
