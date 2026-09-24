@@ -1,8 +1,8 @@
 ---
 import { awards, certifications } from '../data';
-import Base from '../layouts/Base.astro';
 import type { Lang } from '../i18n/ui';
 import { asset, available, formatMonth, useTranslations } from '../i18n/utils';
+import Base from '../layouts/Base.astro';
 
 interface Props {
   lang: Lang;
@@ -26,7 +26,9 @@ const certs = [...certifications].sort((a, b) => Number(b.featured) - Number(a.f
             <div>
               <p class="font-semibold text-stone-900 dark:text-slate-100">{a.title[lang]}</p>
               <p class="text-sm">{a.issuer}</p>
-              {a.details[lang] && <p class="text-sm text-stone-600 dark:text-slate-400">{a.details[lang]}</p>}
+              {a.details[lang] && (
+                <p class="text-sm text-stone-600 dark:text-slate-400">{a.details[lang]}</p>
+              )}
             </div>
           </li>
         ))
@@ -50,7 +52,12 @@ const certs = [...certifications].sort((a, b) => Number(b.featured) - Number(a.f
                   data-cert-open={c.id}
                   aria-label={`${t('cert.preview')}: ${c.title}`}
                 >
-                  <img src={asset(c.thumbnail)} alt="" loading="lazy" class="size-full object-contain" />
+                  <img
+                    src={asset(c.thumbnail)}
+                    alt=""
+                    loading="lazy"
+                    class="size-full object-contain"
+                  />
                 </button>
               ) : (
                 <div class="flex aspect-[3] items-center justify-center border-b border-stone-200 bg-stone-50 px-4 text-center font-mono text-xs text-stone-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
@@ -58,7 +65,9 @@ const certs = [...certifications].sort((a, b) => Number(b.featured) - Number(a.f
                 </div>
               )}
               <div class="flex flex-1 flex-col p-3">
-                <p class="leading-snug font-semibold text-stone-900 dark:text-slate-100">{c.title}</p>
+                <p class="leading-snug font-semibold text-stone-900 dark:text-slate-100">
+                  {c.title}
+                </p>
                 <p class="text-sm">{c.issuer}</p>
                 <p class="meta mt-0.5">
                   {formatMonth(c.date, lang)}
@@ -79,7 +88,12 @@ const certs = [...certifications].sort((a, b) => Number(b.featured) - Number(a.f
                 {(pdf || c.verifyUrl) && (
                   <p class="mt-auto flex gap-1.5 pt-3">
                     {pdf && (
-                      <a class="badge" href={asset(c.pdf)} target="_blank" rel="noopener noreferrer">
+                      <a
+                        class="badge"
+                        href={asset(c.pdf)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {t('cert.pdf')}
                       </a>
                     )}
@@ -99,7 +113,11 @@ const certs = [...certifications].sort((a, b) => Number(b.featured) - Number(a.f
                   <form method="dialog" class="flex justify-end p-2">
                     <button class="badge">{t('cert.close')}</button>
                   </form>
-                  <img src={asset(c.thumbnail)} alt={c.title} class="max-h-[80vh] w-full object-contain" />
+                  <img
+                    src={asset(c.thumbnail)}
+                    alt={c.title}
+                    class="max-h-[80vh] w-full object-contain"
+                  />
                 </dialog>
               )}
             </li>
@@ -112,7 +130,9 @@ const certs = [...certifications].sort((a, b) => Number(b.featured) - Number(a.f
 
 <script>
   document.querySelectorAll<HTMLButtonElement>('[data-cert-open]').forEach((btn) => {
-    const dialog = document.getElementById(`cert-${btn.dataset.certOpen}`) as HTMLDialogElement | null;
+    const dialog = document.getElementById(
+      `cert-${btn.dataset.certOpen}`,
+    ) as HTMLDialogElement | null;
     btn.addEventListener('click', () => dialog?.showModal());
     dialog?.addEventListener('click', (e) => e.target === dialog && dialog.close());
   });

@@ -2,10 +2,10 @@
 import PublicationItem from '../components/PublicationItem.astro';
 import SocialIcons from '../components/SocialIcons.astro';
 import { news, profile } from '../data';
-import Base from '../layouts/Base.astro';
-import { publications } from '../lib/publications';
 import type { Lang } from '../i18n/ui';
 import { asset, available, formatMonth, localizePath, useTranslations } from '../i18n/utils';
+import Base from '../layouts/Base.astro';
+import { publications } from '../lib/publications';
 
 interface Props {
   lang: Lang;
@@ -17,8 +17,9 @@ const selected = publications.filter((p) => p.selected);
 const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
 ---
 
-<Base lang={lang} path="/" sidebar={false}>
-  <section class="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-8">
+<Base lang={lang} path="/" switchable>
+  <h1 class="only-sidebar sr-only">{profile.name}</h1>
+  <section class="only-hero mb-6 flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-8">
     {
       available(profile.photo) && (
         <img
@@ -26,7 +27,7 @@ const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
           alt={profile.name}
           width="176"
           height="176"
-          class="size-36 shrink-0 rounded-full border border-stone-200 object-cover sm:size-44 dark:border-slate-700"
+          class="size-36 shrink-0 rounded-full border-2 border-gold/60 object-cover sm:size-44"
         />
       )
     }
@@ -49,7 +50,9 @@ const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
     </div>
   </section>
 
-  <p class="mt-6 rounded border-l-2 border-accent bg-blue-50/60 px-4 py-2 text-sm dark:border-accent-dark dark:bg-slate-800/60">
+  <p
+    class="mt-6 rounded border-l-2 border-gold bg-gold/10 px-4 py-2 text-sm dark:bg-gold/10"
+  >
     {profile.seeking[lang]}
   </p>
 
@@ -62,7 +65,7 @@ const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
 
   <section class="mt-10">
     <h2 class="section-title">{t('home.interests')}</h2>
-    <ul class="grid gap-x-8 gap-y-1 pl-5 text-sm sm:grid-cols-2 list-disc">
+    <ul class="grid list-disc gap-x-8 gap-y-1 pl-5 text-sm sm:grid-cols-2">
       {profile.researchInterests.map((i) => <li>{i[lang]}</li>)}
     </ul>
   </section>

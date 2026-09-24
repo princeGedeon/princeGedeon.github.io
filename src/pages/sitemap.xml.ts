@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 
 import { teaching } from '../data';
-import { languages, routes, type Lang } from '../i18n/ui';
+import { type Lang, languages, routes } from '../i18n/ui';
 import { localizePath } from '../i18n/utils';
 
 export const GET: APIRoute = ({ site }) => {

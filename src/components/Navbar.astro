@@ -1,7 +1,7 @@
 ---
+import { profile } from '../data';
 import { type Lang, routes } from '../i18n/ui';
 import { localizePath, useTranslations } from '../i18n/utils';
-import { profile } from '../data';
 import ThemeToggle from './ThemeToggle.astro';
 
 interface Props {
@@ -38,7 +38,10 @@ const linkCls =
               <a
                 href={l.href}
                 aria-current={l.active ? 'page' : undefined}
-                class:list={[linkCls, l.active && 'font-medium text-stone-900 underline dark:text-slate-100']}
+                class:list={[
+                  linkCls,
+                  l.active && 'font-medium text-stone-900 underline dark:text-slate-100',
+                ]}
               >
                 {l.label}
               </a>

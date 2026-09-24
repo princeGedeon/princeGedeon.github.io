@@ -10,26 +10,35 @@ interface Props {
 
 const { pub, lang } = Astro.props;
 const t = useTranslations(lang);
-const linkLabel = { pdf: t('pub.pdf'), code: t('pub.code'), website: t('pub.website'), slides: t('pub.slides') };
+const linkLabel = {
+  pdf: t('pub.pdf'),
+  code: t('pub.code'),
+  website: t('pub.website'),
+  slides: t('pub.slides'),
+};
 ---
 
 <li class="grid gap-x-4 sm:grid-cols-[4.5rem_1fr]">
   <div class="mb-1 sm:mb-0">
     {
       pub.abbr && (
-        <span class="inline-block w-full rounded bg-accent px-1 py-0.5 text-center font-mono text-[11px] font-semibold text-white dark:bg-sky-800">
+        <span class="bg-accent inline-block w-full rounded px-1 py-0.5 text-center font-mono text-[12px] font-semibold text-white dark:bg-gold dark:text-[#12100c]">
           {pub.abbr}
         </span>
       )
     }
   </div>
   <div>
-    <p class="font-semibold leading-snug text-stone-900 dark:text-slate-100">{pub.title}</p>
+    <p class="leading-snug font-semibold text-stone-900 dark:text-slate-100">{pub.title}</p>
     <p class="text-sm">
       {
         pub.authors.map((a, i) => (
           <>
-            {a.self ? <strong class="underline decoration-stone-300 underline-offset-2">{a.name}</strong> : a.name}
+            {a.self ? (
+              <strong class="underline decoration-stone-300 underline-offset-2">{a.name}</strong>
+            ) : (
+              a.name
+            )}
             {i < pub.authors.length - 1 && ', '}
           </>
         ))
@@ -57,7 +66,11 @@ const linkLabel = { pdf: t('pub.pdf'), code: t('pub.code'), website: t('pub.webs
       }
       {
         pub.abstract && (
-          <p data-panel="abs" hidden class="mt-1 w-full rounded border border-stone-200 p-3 text-sm dark:border-slate-700">
+          <p
+            data-panel="abs"
+            hidden
+            class="mt-1 w-full rounded border border-stone-200 p-3 text-sm dark:border-slate-700"
+          >
             {pub.abstract}
           </p>
         )
@@ -91,13 +104,15 @@ const linkLabel = { pdf: t('pub.pdf'), code: t('pub.code'), website: t('pub.webs
         });
       });
     });
-    root.querySelector<HTMLButtonElement>('[data-copy-bib]')?.addEventListener('click', async (e) => {
-      const btn = e.currentTarget as HTMLButtonElement;
-      const code = root.querySelector('[data-panel="bib"] code')?.textContent ?? '';
-      const label = btn.textContent;
-      await navigator.clipboard.writeText(code);
-      btn.textContent = btn.dataset.done ?? label;
-      setTimeout(() => (btn.textContent = label), 1500);
-    });
+    root
+      .querySelector<HTMLButtonElement>('[data-copy-bib]')
+      ?.addEventListener('click', async (e) => {
+        const btn = e.currentTarget as HTMLButtonElement;
+        const code = root.querySelector('[data-panel="bib"] code')?.textContent ?? '';
+        const label = btn.textContent;
+        await navigator.clipboard.writeText(code);
+        btn.textContent = btn.dataset.done ?? label;
+        setTimeout(() => (btn.textContent = label), 1500);
+      });
   });
 </script>

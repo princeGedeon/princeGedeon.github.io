@@ -2,8 +2,8 @@
   "name": "Prince Gédéon GUEDJE",
   "shortName": "Prince G. Guedje",
   "headline": {
-    "en": "AI & Robotics Researcher · M.Sc. in AI & Optimization",
-    "fr": "Chercheur en IA & Robotique · Master IA & Optimisation"
+    "en": "AI Researcher · Research Master in AI & Optimization",
+    "fr": "Chercheur en IA · Master Recherche en IA & Optimisation"
   },
   "affiliation": {
     "en": "Université Clermont Auvergne · LIMOS",
@@ -78,12 +78,12 @@
   ],
   "bio": {
     "en": [
-      "I am an AI & robotics researcher working on <strong>safe multi-agent reinforcement learning</strong> for autonomous systems, with an M.Sc. in AI & Optimization from <strong>Universit? Clermont Auvergne</strong> (MIAI Excellence Scholarship).",
-      "My master's thesis studies decentralized coordination of UAV swarms for 3D urban mapping under energy and communication constraints. I am currently <strong>seeking a PhD position</strong>."
+      "I recently completed an international <strong>Research Master (M2) in Artificial Intelligence & Optimization</strong>, fully taught in English, at <strong>Université Clermont Auvergne</strong>, France, with the MIAI Excellence Scholarship.",
+      "My master's thesis at <strong>LIMOS</strong> focused on <strong>safe multi-agent reinforcement learning</strong> for UAV swarms mapping 3D urban environments. I also worked on multimodal document-parsing pipelines as an ML R&D intern at <strong>bioMérieux</strong>. I am now <strong>seeking a PhD position</strong>."
     ],
     "fr": [
-      "Je suis chercheur en IA et robotique, sp?cialis? en <strong>apprentissage par renforcement multi-agents s?r</strong> pour les syst?mes autonomes, dipl?m? d'un Master IA & Optimisation de l'<strong>Universit? Clermont Auvergne</strong> (bourse d'excellence MIAI).",
-      "Mon m?moire de Master porte sur la coordination d?centralis?e d'essaims de drones pour la cartographie 3D urbaine sous contraintes d'?nergie et de communication. Je suis actuellement <strong>? la recherche d'un doctorat</strong>."
+      "Je viens de terminer un <strong>Master Recherche international (M2) en Intelligence Artificielle & Optimisation</strong>, entièrement enseigné en anglais, à l'<strong>Université Clermont Auvergne</strong>, avec la bourse d'excellence MIAI.",
+      "Mon mémoire au <strong>LIMOS</strong> portait sur l'<strong>apprentissage par renforcement multi-agents sûr</strong> pour des essaims de drones cartographiant des environnements urbains 3D. J'ai aussi travaillé sur des pipelines d'analyse de documents multimodaux en stage R&D ML chez <strong>bioMérieux</strong>. Je suis maintenant <strong>à la recherche d'un doctorat</strong>."
     ]
   },
   "pillars": [
@@ -166,8 +166,8 @@
     {
       "period": "Sep 2025 – Aug 2026",
       "degree": {
-        "en": "Master 2 in International Computer Science — AI & Optimization",
-        "fr": "Master 2 Informatique internationale — IA & Optimisation"
+        "en": "Research Master 2 in International Computer Science — AI & Optimization (fully taught in English)",
+        "fr": "Master 2 Recherche Informatique internationale — IA & Optimisation (entièrement en anglais)"
       },
       "institution": "Université Clermont Auvergne, France",
       "details": {
@@ -319,7 +319,7 @@
   },
   "seo": {
     "keywords": [
-      "Prince G?d?on Guedje",
+      "Prince Gédéon Guedje",
       "multi-agent reinforcement learning",
       "safe reinforcement learning",
       "MARL",
@@ -328,13 +328,14 @@
       "autonomous systems",
       "AI researcher",
       "PhD candidate",
-      "Universit? Clermont Auvergne",
+      "Université Clermont Auvergne",
       "LIMOS"
     ],
     "googleVerification": "",
     "alumniOf": [
-      "Universit? Clermont Auvergne",
-      "IFRI, Universit? d'Abomey-Calavi"
+      "Université Clermont Auvergne",
+      "IFRI, Université d'Abomey-Calavi"
     ]
-  }
+  },
+  "homeLayout": "sidebar"
 }

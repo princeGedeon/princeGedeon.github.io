@@ -816,3 +816,12 @@ footer: {
 | `'hidden'` | Footer is not rendered at all                                                             |
 
 When `'sticky'`, the body automatically gains `padding-bottom` to prevent page content from being obscured by the footer. The back-to-top button is also repositioned to sit above it.
+
+## SEO, teaching language and project PDFs
+
+- `src/data/profile.json` → `seo`: `keywords` (meta keywords), `googleVerification` (Google Search Console code, empty = disabled), `alumniOf` (JSON-LD `Person`).
+- `src/data/teaching.json` → `language`: `["fr"]`, `["en"]` or both — shown as a "Taught in …" tag. Courses are grouped by year.
+- `src/data/projects.json` → `pdf`: path in `public/` (e.g. a thesis) — adds a **PDF** badge when the file exists.
+- Theme colour and font sizes live in `src/styles/global.css` (`@theme`).
+- `src/data/profile.json` → `homeLayout`: `"sidebar"` (default, classic photo on the side) or `"hero"` (large photo on top). Add `?dev=1` to the URL to preview the other layout.
+- Colours: `--color-gold` (decoration) and `--color-accent` / `--color-accent-dark` (link text) in `src/styles/global.css`. Light mode is the default; dark mode uses warm neutrals (remapped `slate-*`) and a faint kente-style pattern in the header/footer.

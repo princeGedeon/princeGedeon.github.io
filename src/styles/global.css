@@ -10,9 +10,20 @@
     sans-serif;
   --font-mono:
     'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
-  /* Navy — sober, academic. */
-  --color-accent: #1e3a8a;
-  --color-accent-dark: #93c5fd;
+  /* Signature gold (matches the photo). `gold` = decoration, `accent` = readable link text on white. */
+  --color-gold: #f3a918;
+  --color-accent: #a86f00;
+  --color-accent-dark: #f3a918;
+  /* Dark mode uses `slate-*`: remapped to warm, earthy neutrals. */
+  --color-slate-100: #f4eee3;
+  --color-slate-200: #e6dece;
+  --color-slate-300: #d4cbb9;
+  --color-slate-400: #a59b89;
+  --color-slate-500: #7d7466;
+  --color-slate-600: #5a5246;
+  --color-slate-700: #3b352c;
+  --color-slate-800: #25211b;
+  --color-slate-900: #1a1713;
   /* Larger reading sizes site-wide. */
   --text-xs: 0.8125rem;
   --text-sm: 1rem;
@@ -28,7 +39,7 @@
     color-scheme: dark;
   }
   body {
-    @apply bg-white font-sans text-[17px] leading-relaxed text-stone-800 antialiased dark:bg-[#0b1220] dark:text-slate-300;
+    @apply bg-white font-sans text-[17px] leading-relaxed text-stone-800 antialiased dark:bg-[#12100c] dark:text-slate-300;
   }
   h1,
   h2,
@@ -44,6 +55,19 @@
   strong {
     @apply font-semibold text-stone-900 dark:text-slate-100;
   }
+  /* Kente-inspired weave that also reads as a node grid — dark mode only, very faint. */
+  [data-theme='dark'] body > header,
+  [data-theme='dark'] body > footer {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' fill='none' stroke='%23f3a918' stroke-opacity='.07'%3E%3Cpath d='M0 12h48M0 36h48M12 0v48M36 0v48'/%3E%3Crect x='18' y='18' width='12' height='12'/%3E%3Cpath d='M0 0l12 12M36 36l12 12M48 0L36 12M12 36L0 48'/%3E%3Cg fill='%23f3a918' fill-opacity='.12' stroke='none'%3E%3Ccircle cx='12' cy='12' r='1.5'/%3E%3Ccircle cx='36' cy='12' r='1.5'/%3E%3Ccircle cx='12' cy='36' r='1.5'/%3E%3Ccircle cx='36' cy='36' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  /* Home layout switch (see Base.astro `switchable`). */
+  html[data-layout='hero'] .only-sidebar,
+  html:not([data-layout='hero']) .only-hero {
+    display: none;
+  }
+  html[data-layout='hero'] .home-grid {
+    display: block;
+  }
 }
 
 @layer components {
@@ -52,16 +76,16 @@
   }
   .section-title::after {
     content: '';
-    @apply absolute -bottom-px left-0 h-0.5 w-10 bg-accent dark:bg-accent-dark;
+    @apply absolute -bottom-px left-0 h-0.5 w-10 bg-gold;
   }
   .meta {
     @apply font-mono text-[13px] text-stone-500 dark:text-slate-400;
   }
   .badge {
-    @apply inline-flex cursor-pointer items-center rounded border border-stone-300 px-2 py-0.5 font-mono text-[12.5px] leading-5 text-stone-700 no-underline select-none hover:border-accent hover:text-accent hover:no-underline dark:border-slate-600 dark:text-slate-300 dark:hover:border-accent-dark dark:hover:text-accent-dark;
+    @apply inline-flex cursor-pointer items-center rounded border border-stone-300 px-2 py-0.5 font-mono text-[12.5px] leading-5 text-stone-700 no-underline select-none hover:border-gold hover:text-accent hover:no-underline dark:border-slate-600 dark:text-slate-300 dark:hover:text-accent-dark;
   }
   .tag {
-    @apply inline-block rounded bg-blue-50 px-2 py-0.5 font-mono text-[12.5px] text-accent dark:bg-slate-800 dark:text-accent-dark;
+    @apply inline-block rounded bg-gold/10 px-2 py-0.5 font-mono text-[12.5px] text-stone-800 dark:text-slate-200;
   }
   .prose-tight p + p {
     @apply mt-3;

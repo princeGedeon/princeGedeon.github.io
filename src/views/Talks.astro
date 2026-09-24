@@ -1,8 +1,8 @@
 ---
 import { talks } from '../data';
-import Base from '../layouts/Base.astro';
 import type { Lang } from '../i18n/ui';
 import { asset, available, formatMonth, useTranslations } from '../i18n/utils';
+import Base from '../layouts/Base.astro';
 
 interface Props {
   lang: Lang;
@@ -22,14 +22,21 @@ const t = useTranslations(lang);
             {formatMonth(talk.date, lang)}
           </time>
           <div>
-            <p class="font-semibold leading-snug text-stone-900 dark:text-slate-100">{talk.title[lang]}</p>
+            <p class="leading-snug font-semibold text-stone-900 dark:text-slate-100">
+              {talk.title[lang]}
+            </p>
             <p class="text-sm">
               {talk.event[lang]} · {talk.location}
             </p>
             <p class="mt-1.5 flex flex-wrap gap-1.5">
               <span class="tag">{talk.type[lang]}</span>
               {available(talk.slides) && (
-                <a class="badge" href={asset(talk.slides)} target="_blank" rel="noopener noreferrer">
+                <a
+                  class="badge"
+                  href={asset(talk.slides)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {t('talks.slides')}
                 </a>
               )}

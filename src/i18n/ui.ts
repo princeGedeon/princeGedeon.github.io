@@ -29,7 +29,7 @@ export const ui = {
     'nav.menu': 'Menu',
     'lang.switch': 'Lire en français',
     'theme.toggle': 'Toggle dark mode',
-    'skip': 'Skip to content',
+    skip: 'Skip to content',
 
     'home.interests': 'Research Interests',
     'home.news': 'News',
@@ -80,9 +80,9 @@ export const ui = {
     'teaching.noMaterials': 'Materials will be available soon.',
     'teaching.back': 'All courses',
     'teaching.details': 'Course page',
-  'teaching.taughtIn': 'Taught in',
-  'teaching.lang.en': 'English',
-  'teaching.lang.fr': 'French',
+    'teaching.taughtIn': 'Taught in',
+    'teaching.lang.en': 'English',
+    'teaching.lang.fr': 'French',
 
     'cv.title': 'Curriculum Vitae',
     'cv.desc': 'Education, experience and skills.',
@@ -122,7 +122,7 @@ export const ui = {
     'nav.menu': 'Menu',
     'lang.switch': 'Read in English',
     'theme.toggle': 'Basculer le mode sombre',
-    'skip': 'Aller au contenu',
+    skip: 'Aller au contenu',
 
     'home.interests': 'Thèmes de recherche',
     'home.news': 'Actualités',
@@ -173,9 +173,9 @@ export const ui = {
     'teaching.noMaterials': 'Les supports seront bientôt disponibles.',
     'teaching.back': 'Tous les cours',
     'teaching.details': 'Page du cours',
-  'teaching.taughtIn': 'Enseigné en',
-  'teaching.lang.en': 'anglais',
-  'teaching.lang.fr': 'français',
+    'teaching.taughtIn': 'Enseigné en',
+    'teaching.lang.en': 'anglais',
+    'teaching.lang.fr': 'français',
 
     'cv.title': 'Curriculum Vitae',
     'cv.desc': 'Formation, expériences et compétences.',

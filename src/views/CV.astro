@@ -1,8 +1,8 @@
 ---
 import { profile, skills } from '../data';
-import Base from '../layouts/Base.astro';
 import type { Lang } from '../i18n/ui';
 import { asset, available, localizePath, useTranslations } from '../i18n/utils';
+import Base from '../layouts/Base.astro';
 
 interface Props {
   lang: Lang;
@@ -79,7 +79,9 @@ const row = 'grid gap-x-4 sm:grid-cols-[8.5rem_1fr]';
       {
         skills.map((s) => (
           <div class={row}>
-            <dt class="text-sm font-medium text-stone-900 dark:text-slate-100">{s.category[lang]}</dt>
+            <dt class="text-sm font-medium text-stone-900 dark:text-slate-100">
+              {s.category[lang]}
+            </dt>
             <dd class="flex flex-wrap gap-1">
               {s.items.map((i) => (
                 <span class="tag">{i}</span>

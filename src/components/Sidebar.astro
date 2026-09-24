@@ -28,7 +28,7 @@ const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
           alt={profile.name}
           width="160"
           height="160"
-          class="size-24 rounded-lg border border-stone-200 object-cover md:size-40 dark:border-slate-700"
+          class="size-24 rounded-lg border-2 border-gold/60 object-cover md:size-40"
         />
       ) : (
         <div
@@ -41,7 +41,7 @@ const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
     }
     <div class="md:mt-4">
       <p class="font-semibold text-stone-900 dark:text-slate-100">{profile.name}</p>
-      <p class="mt-1 text-sm leading-snug">{profile.headline[lang]}</p>
+      <p class="mt-1 text-sm leading-snug text-balance [hyphens:none]">{profile.headline[lang]}</p>
       <p class="meta mt-2">{profile.affiliation[lang]}</p>
       <p class="meta">{profile.location[lang]}</p>
     </div>

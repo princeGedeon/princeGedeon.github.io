@@ -1,9 +1,9 @@
 ---
-import { projects, type Project } from '../data';
-import Base from '../layouts/Base.astro';
-import { publicationsByKey } from '../lib/publications';
+import { type Project, projects } from '../data';
 import type { Lang } from '../i18n/ui';
 import { asset, available, localizePath, useTranslations } from '../i18n/utils';
+import Base from '../layouts/Base.astro';
+import { publicationsByKey } from '../lib/publications';
 
 interface Props {
   lang: Lang;
@@ -20,7 +20,10 @@ const hasPaper = (p: Project) => !!p.paper && publicationsByKey.has(p.paper);
   <div class="space-y-8">
     {
       featured.map((p) => (
-        <article id={p.id} class="border-b border-stone-200 pb-8 last:border-0 dark:border-slate-800">
+        <article
+          id={p.id}
+          class="border-b border-stone-200 pb-8 last:border-0 dark:border-slate-800"
+        >
           <div class:list={[available(p.figure) && 'sm:grid sm:grid-cols-[1fr_14rem] sm:gap-6']}>
             <div>
               <h2 class="text-lg leading-snug">{p.title[lang]}</h2>

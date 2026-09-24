@@ -59,6 +59,8 @@ const profileSchema = z.object({
   volunteering: z.array(z.object({ organization: z.string(), details: L })),
   languages: z.array(L),
   references: L,
+  /** Home layout: 'sidebar' (classic, photo on the side) or 'hero' (large photo on top). Preview the other with ?dev=1. */
+  homeLayout: z.enum(['sidebar', 'hero']).default('sidebar'),
   seo: z
     .object({
       /** Search keywords for <meta name="keywords">. */
@@ -139,9 +141,7 @@ const talksSchema = z.array(
   }),
 );
 
-const awardsSchema = z.array(
-  z.object({ date: Month, title: L, issuer: z.string(), details: L }),
-);
+const awardsSchema = z.array(z.object({ date: Month, title: L, issuer: z.string(), details: L }));
 
 function parse<T extends z.ZodTypeAny>(name: string, schema: T, data: unknown): z.infer<T> {
   const result = schema.safeParse(data);
