@@ -100,7 +100,10 @@ const jsonLd = {
     {
       switchable && (
         <script is:inline define:vars={{ layout: profile.homeLayout }}>
-          const dev = new URLSearchParams(location.search).get('dev') === '1';
+          const q = new URLSearchParams(location.search).get('dev');
+          if (q === '1') sessionStorage.setItem('dev', '1');
+          if (q === '0') sessionStorage.removeItem('dev');
+          const dev = sessionStorage.getItem('dev') === '1';
           document.documentElement.dataset.layout = dev ? (layout === 'hero' ? 'sidebar' : 'hero') : layout;
         </script>
       )

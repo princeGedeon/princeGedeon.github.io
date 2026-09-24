@@ -60,14 +60,15 @@
   [data-theme='dark'] body > footer {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' fill='none' stroke='%23f3a918' stroke-opacity='.07'%3E%3Cpath d='M0 12h48M0 36h48M12 0v48M36 0v48'/%3E%3Crect x='18' y='18' width='12' height='12'/%3E%3Cpath d='M0 0l12 12M36 36l12 12M48 0L36 12M12 36L0 48'/%3E%3Cg fill='%23f3a918' fill-opacity='.12' stroke='none'%3E%3Ccircle cx='12' cy='12' r='1.5'/%3E%3Ccircle cx='36' cy='12' r='1.5'/%3E%3Ccircle cx='12' cy='36' r='1.5'/%3E%3Ccircle cx='36' cy='36' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
   }
-  /* Home layout switch (see Base.astro `switchable`). */
-  html[data-layout='hero'] .only-sidebar,
-  html:not([data-layout='hero']) .only-hero {
-    display: none;
-  }
-  html[data-layout='hero'] .home-grid {
-    display: block;
-  }
+}
+
+/* Home layout switch (see Base.astro `switchable`). Unlayered so it beats Tailwind utilities. */
+html[data-layout='hero'] .only-sidebar,
+html:not([data-layout='hero']) .only-hero {
+  display: none !important;
+}
+html[data-layout='hero'] .home-grid {
+  display: block !important;
 }
 
 @layer components {
