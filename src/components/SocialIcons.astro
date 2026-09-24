@@ -56,7 +56,7 @@ const itemCls =
             title={s.label}
             class={itemCls}
           >
-            <Icon class="size-4 shrink-0" aria-hidden="true" />
+            <Icon class:list={['size-4 shrink-0', s.id === 'orcid' && 'text-[#A6CE39]']} aria-hidden="true" />
             {variant === 'list' && <span>{s.label}</span>}
           </a>
           {isEmail && variant === 'list' && (

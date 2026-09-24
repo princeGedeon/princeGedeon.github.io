@@ -112,10 +112,14 @@ const row = 'grid gap-x-4 sm:grid-cols-[8.5rem_1fr]';
     </div>
   </section>
 
-  <section class="mb-6">
-    <h2 class="section-title">{t('cv.references')}</h2>
-    <p class="text-sm">{profile.references[lang]}</p>
-  </section>
+  {
+    profile.showReferences && (
+      <section class="mb-6">
+        <h2 class="section-title">{t('cv.references')}</h2>
+        <p class="text-sm">{profile.references[lang]}</p>
+      </section>
+    )
+  }
 
   <p class="meta">
     {t('cv.more')}

@@ -6,12 +6,12 @@
     "fr": "Chercheur en IA · Master Recherche en IA & Optimisation"
   },
   "affiliation": {
-    "en": "Université Clermont Auvergne · LIMOS",
-    "fr": "Université Clermont Auvergne · LIMOS"
+    "en": "Université Clermont Auvergne",
+    "fr": "Université Clermont Auvergne"
   },
   "location": {
-    "en": "Lyon / Clermont-Ferrand, France",
-    "fr": "Lyon / Clermont-Ferrand, France"
+    "en": "Marseille, France",
+    "fr": "Marseille, France"
   },
   "photo": "/img/prince.jpg",
   "email": {
@@ -78,12 +78,16 @@
   ],
   "bio": {
     "en": [
-      "I recently completed an international <strong>Research Master (M2) in Artificial Intelligence & Optimization</strong>, fully taught in English, at <strong>Université Clermont Auvergne</strong>, France, with the MIAI Excellence Scholarship.",
-      "My master's thesis at <strong>LIMOS</strong> focused on <strong>safe multi-agent reinforcement learning</strong> for UAV swarms mapping 3D urban environments. I also worked on multimodal document-parsing pipelines as an ML R&D intern at <strong>bioMérieux</strong>. I am now <strong>seeking a PhD position</strong>."
+      "I recently completed an international <strong>Research Master’s (M2) in Artificial Intelligence & Optimization</strong>, fully taught in English, at <strong>Université Clermont Auvergne</strong>, France, supported by the <strong>MIAI Excellence Scholarship</strong>.",
+      "My research experience focuses on <strong>reinforcement learning for autonomous and multi-agent systems</strong>. My Master’s thesis focused on <strong>safe multi-agent reinforcement learning for cooperative UAV and ground-robot systems in 3D urban mapping</strong>. I also worked as an <strong>ML R&D intern at bioMérieux</strong>, developing multimodal document-parsing pipelines for clinical microbiology.",
+      "I am particularly interested in <strong>multi-agent reinforcement learning, safe reinforcement learning, autonomous robotics, computer vision, and adaptive decision-making</strong>, with a focus on learning-based autonomous systems that can coordinate and adapt in complex environments.",
+      "I am currently <strong>seeking a PhD position</strong> in these areas."
     ],
     "fr": [
-      "Je viens de terminer un <strong>Master Recherche international (M2) en Intelligence Artificielle & Optimisation</strong>, entièrement enseigné en anglais, à l'<strong>Université Clermont Auvergne</strong>, avec la bourse d'excellence MIAI.",
-      "Mon mémoire au <strong>LIMOS</strong> portait sur l'<strong>apprentissage par renforcement multi-agents sûr</strong> pour des essaims de drones cartographiant des environnements urbains 3D. J'ai aussi travaillé sur des pipelines d'analyse de documents multimodaux en stage R&D ML chez <strong>bioMérieux</strong>. Je suis maintenant <strong>à la recherche d'un doctorat</strong>."
+      "Je viens de terminer un <strong>Master Recherche international (M2) en Intelligence Artificielle & Optimisation</strong>, entièrement enseigné en anglais, à l’<strong>Université Clermont Auvergne</strong>, avec le soutien de la <strong>bourse d’excellence MIAI</strong>.",
+      "Mon expérience de recherche porte sur l’<strong>apprentissage par renforcement pour les systèmes autonomes et multi-agents</strong>. Mon mémoire de Master portait sur l’<strong>apprentissage par renforcement multi-agents sûr pour des systèmes coopératifs drones / robots terrestres en cartographie urbaine 3D</strong>. J’ai également été <strong>stagiaire R&D en ML chez bioMérieux</strong>, où j’ai développé des pipelines multimodaux d’analyse de documents pour la microbiologie clinique.",
+      "Je m’intéresse particulièrement à l’<strong>apprentissage par renforcement multi-agents, l’apprentissage par renforcement sûr, la robotique autonome, la vision par ordinateur et la prise de décision adaptative</strong>, en particulier aux systèmes autonomes apprenants capables de se coordonner et de s’adapter dans des environnements complexes.",
+      "Je suis actuellement <strong>à la recherche d’un doctorat</strong> dans ces domaines."
     ]
   },
   "pillars": [
@@ -328,8 +332,7 @@
       "autonomous systems",
       "AI researcher",
       "PhD candidate",
-      "Université Clermont Auvergne",
-      "LIMOS"
+      "Université Clermont Auvergne"
     ],
     "googleVerification": "",
     "alumniOf": [

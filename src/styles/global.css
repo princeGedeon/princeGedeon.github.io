@@ -15,15 +15,15 @@
   --color-accent: #a86f00;
   --color-accent-dark: #f3a918;
   /* Dark mode uses `slate-*`: remapped to warm, earthy neutrals. */
-  --color-slate-100: #f4eee3;
-  --color-slate-200: #e6dece;
-  --color-slate-300: #d4cbb9;
-  --color-slate-400: #a59b89;
-  --color-slate-500: #7d7466;
-  --color-slate-600: #5a5246;
-  --color-slate-700: #3b352c;
-  --color-slate-800: #25211b;
-  --color-slate-900: #1a1713;
+  --color-slate-100: #f2f0ec;
+  --color-slate-200: #e4e1db;
+  --color-slate-300: #d2cec7;
+  --color-slate-400: #a19c94;
+  --color-slate-500: #79746d;
+  --color-slate-600: #57534d;
+  --color-slate-700: #393632;
+  --color-slate-800: #24221f;
+  --color-slate-900: #191816;
   /* Larger reading sizes site-wide. */
   --text-xs: 0.8125rem;
   --text-sm: 1rem;
@@ -39,7 +39,7 @@
     color-scheme: dark;
   }
   body {
-    @apply bg-white font-sans text-[17px] leading-relaxed text-stone-800 antialiased dark:bg-[#12100c] dark:text-slate-300;
+    @apply bg-white font-sans text-[17px] leading-relaxed text-stone-800 antialiased dark:bg-[#121110] dark:text-slate-300;
   }
   h1,
   h2,

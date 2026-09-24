@@ -59,6 +59,8 @@ const profileSchema = z.object({
   volunteering: z.array(z.object({ organization: z.string(), details: L })),
   languages: z.array(L),
   references: L,
+  /** Show the References section on the CV page. */
+  showReferences: z.boolean().default(false),
   /** Home layout: 'sidebar' (classic, photo on the side) or 'hero' (large photo on top). Preview the other with ?dev=1. */
   homeLayout: z.enum(['sidebar', 'hero']).default('sidebar'),
   seo: z
