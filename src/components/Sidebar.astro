@@ -42,7 +42,7 @@ const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
       )
     }
     <div class="md:mt-4">
-      <p class="font-semibold text-stone-900 dark:text-slate-100">{profile.name}</p>
+      <p class="font-serif text-lg leading-tight font-semibold text-stone-900 dark:text-slate-100">{profile.name}</p>
       <p class="mt-1 text-sm leading-snug text-balance [hyphens:none]">{profile.headline[lang]}</p>
       <p class="meta mt-2 flex items-start gap-1.5">
         <GradIcon class="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />

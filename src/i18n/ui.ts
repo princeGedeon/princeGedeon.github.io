@@ -34,6 +34,7 @@ export const ui = {
     'home.interests': 'Research Interests',
     'home.news': 'News',
     'home.selected': 'Selected Publications',
+    'home.featured': 'Master’s thesis',
     'home.allNews': 'All news',
     'home.allPubs': 'All publications',
 
@@ -127,6 +128,7 @@ export const ui = {
     'home.interests': 'Thèmes de recherche',
     'home.news': 'Actualités',
     'home.selected': 'Publications choisies',
+    'home.featured': 'Mémoire de Master',
     'home.allNews': 'Toutes les actualités',
     'home.allPubs': 'Toutes les publications',
 

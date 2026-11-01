@@ -10,9 +10,11 @@
     sans-serif;
   --font-mono:
     'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+  /* Headings, the name and the research question: an academic serif that pairs with Inter. */
+  --font-serif: 'Source Serif 4', ui-serif, Georgia, Cambria, 'Times New Roman', serif;
   /* Signature gold (matches the photo). `gold` = decoration, `accent` = readable link text on white. */
   --color-gold: #f3a918;
-  --color-accent: #a86f00;
+  --color-accent: #8a5a00;
   --color-accent-dark: #f3a918;
   /* Dark mode uses `slate-*`: remapped to warm, earthy neutrals. */
   --color-slate-100: #f2f0ec;
@@ -44,7 +46,7 @@
   h1,
   h2,
   h3 {
-    @apply font-semibold tracking-tight text-stone-900 dark:text-slate-100;
+    @apply font-serif font-semibold tracking-tight text-stone-900 dark:text-slate-100;
   }
   a {
     @apply text-accent underline-offset-2 hover:underline dark:text-accent-dark;
@@ -90,6 +92,19 @@ html[data-layout='hero'] .home-grid {
   }
   .prose-tight p + p {
     @apply mt-3;
+  }
+  /* The one emphasised element on the home page: the central research question. */
+  .research-question {
+    @apply mt-2 border-l-[3px] border-gold py-1 pl-5 font-serif text-[1.3rem] leading-snug font-medium text-pretty text-stone-900 sm:text-[1.45rem] dark:text-slate-100;
+  }
+  .featured-card {
+    @apply block rounded-lg text-inherit no-underline hover:no-underline;
+  }
+  .featured-card:hover img {
+    @apply border-gold;
+  }
+  .featured-card:focus-visible {
+    @apply outline-offset-4;
   }
   details > summary {
     list-style: none;

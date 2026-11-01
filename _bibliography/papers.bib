@@ -1,19 +1,20 @@
 % Publications — one entry per paper.
 % Display-only fields (not exported in the copyable BibTeX):
 %   abstract, pdf (path in public/ or URL), code, website, slides, selected
-% TODO: add co-authors from the Springer proceedings.
 
-@inproceedings{guedje2024nextvision,
-  title     = {NextVision: An Intelligent Video Surveillance System Based on Computer Vision and Natural Language Processing},
-  author    = {Guedje, Prince Gédéon},
-  booktitle = {Proceedings of the International Congress on Information and Communication Technology (ICICT 2024)},
+@inproceedings{houndji2024nextvision,
+  title     = {NextVision, an Intelligent Video Surveillance System Based on Computer Vision and Natural Language Processing},
+  author    = {Houndji, Vinasetan Ratheil and Guedje, Prince Gédéon},
+  booktitle = {Proceedings of the Ninth International Congress on Information and Communication Technology (ICICT 2024)},
+  series    = {Lecture Notes in Networks and Systems},
+  volume    = {1055},
+  pages     = {271--281},
   publisher = {Springer},
-  address   = {London, United Kingdom},
+  address   = {Singapore},
   year      = {2024},
   doi       = {10.1007/978-981-97-5441-0_24},
   abbr      = {ICICT},
-  abstract  = {We present NextVision, a multimodal video-surveillance architecture that combines a fine-tuned YOLO detector with ByteTrack multi-object tracking and a natural-language-processing layer, enabling semantic analysis and querying of video streams.},
-  pdf       = {/papers/nextvision-icict2024.pdf},
+  abstract  = {NextVision combines a fine-tuned YOLO detector with ByteTrack multi-object tracking and a natural language layer, so that video streams can be queried in plain language.},
   selected  = {true}
 }
 
@@ -23,7 +24,7 @@
   school    = {Université Clermont Auvergne},
   year      = {2026},
   abbr      = {M.Sc. Thesis},
-  abstract  = {Decentralized coverage path planning for a UAV swarm mapping a 3D urban environment, formulated as a Dec-POMDP under energy, communication and no-fly-zone constraints, and solved with Lagrangian MAPPO and Control Barrier Functions in a ROS 2 / Gazebo simulation stack.},
-  pdf       = {/papers/master-thesis-guedje-2026.pdf},
+  abstract  = {A team of three drones maps an unknown city in simulation. The mission is formulated as a constrained Dec-POMDP. The drones learn with MAPPO, share information with their neighbours through a graph attention layer, and merge their maps with multi-robot SLAM. Battery and storage limits are handled with Lagrangian penalties, and collisions, altitude limits and no-fly zones with a Control Barrier Function filter. The full pipeline runs in Gazebo and ROS 2.},
+  pdf       = {/papers/thesis-summary-guedje-2026.pdf},
   selected  = {true}
 }

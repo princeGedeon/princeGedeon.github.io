@@ -1,0 +1,173 @@
+---
+import type { Profile } from '../data';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  labels: NonNullable<Profile['research']>['diagram'];
+  lang: Lang;
+}
+
+const { labels, lang } = Astro.props;
+const l = (k: keyof typeof labels) => labels[k][lang];
+
+// Three robots: two drones and one ground robot, each with its own controller.
+const robots = [
+  { x: 130, kind: 'drone' as const },
+  { x: 320, kind: 'drone' as const },
+  { x: 510, kind: 'ground' as const },
+];
+---
+
+<figure class="research-diagram">
+  <svg
+    viewBox="0 0 640 290"
+    role="img"
+    aria-labelledby="rd-title rd-desc"
+    class="h-auto w-full"
+  >
+    <title id="rd-title">{l('top')}</title>
+    <desc id="rd-desc">{l('caption')}</desc>
+    <defs>
+      <marker id="rd-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" class="rd-ink-fill" />
+      </marker>
+      <marker id="rd-arrow-gold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" class="rd-gold-fill" />
+      </marker>
+    </defs>
+
+    <!-- High level: learned coordination -->
+    <rect x="110" y="14" width="420" height="62" rx="10" class="rd-top" />
+    <text x="320" y="42" text-anchor="middle" class="rd-title">{l('top')}</text>
+    <text x="320" y="62" text-anchor="middle" class="rd-sub">{l('topSub')}</text>
+
+    {
+      robots.map((r, i) => (
+        <g>
+          {/* tasks down (solid) and feasibility up (dashed gold) */}
+          <line x1={r.x - 10} y1="78" x2={r.x - 10} y2="146" class="rd-ink" marker-end="url(#rd-arrow)" />
+          <line x1={r.x + 10} y1="146" x2={r.x + 10} y2="80" class="rd-gold rd-dash" marker-end="url(#rd-arrow-gold)" />
+          {i === 0 && (
+            <>
+              <text x={r.x - 16} y="116" text-anchor="end" class="rd-small">{l('down')}</text>
+              <text x={r.x + 16} y="116" class="rd-small rd-gold-text">{l('up')}</text>
+            </>
+          )}
+
+          {/* low-level controller */}
+          <rect x={r.x - 52} y="148" width="104" height="36" rx="6" class="rd-box" />
+          <text x={r.x} y="171" text-anchor="middle" class="rd-label">{l('controller')}</text>
+
+          {/* robot icon */}
+          {r.kind === 'drone' ? (
+            <g transform={`translate(${r.x} 222)`} class="rd-robot">
+              <line x1="-16" y1="-8" x2="16" y2="8" />
+              <line x1="-16" y1="8" x2="16" y2="-8" />
+              <circle cx="-16" cy="-8" r="6" />
+              <circle cx="16" cy="-8" r="6" />
+              <circle cx="-16" cy="8" r="6" />
+              <circle cx="16" cy="8" r="6" />
+              <rect x="-5" y="-4" width="10" height="8" rx="2" class="rd-body" />
+            </g>
+          ) : (
+            <g transform={`translate(${r.x} 222)`} class="rd-robot">
+              <rect x="-20" y="-10" width="40" height="16" rx="3" class="rd-body" />
+              <line x1="0" y1="-10" x2="0" y2="-18" />
+              <circle cx="0" cy="-20" r="3" />
+              <circle cx="-12" cy="10" r="5" />
+              <circle cx="12" cy="10" r="5" />
+            </g>
+          )}
+          <text x={r.x} y="262" text-anchor="middle" class="rd-small">
+            {l(r.kind === 'drone' ? 'drone' : 'ground')}
+          </text>
+        </g>
+      ))
+    }
+
+    <!-- limited, intermittent communication between robots -->
+    <line x1="152" y1="222" x2="296" y2="222" class="rd-gold rd-dash-fine" />
+    <line x1="344" y1="222" x2="486" y2="222" class="rd-gold rd-dash-fine" />
+    <text x="320" y="284" text-anchor="middle" class="rd-small rd-gold-text">{l('link')}</text>
+  </svg>
+  <figcaption class="mt-2 text-sm text-stone-500 dark:text-slate-400">{l('caption')}</figcaption>
+</figure>
+
+<style>
+  .research-diagram {
+    --rd-ink: #44403c;
+    --rd-soft: #fafaf9;
+    --rd-line: #d6d3d1;
+    --rd-gold: #c98a06;
+    margin: 0;
+  }
+  :global([data-theme='dark']) .research-diagram {
+    --rd-ink: #d2cec7;
+    --rd-soft: #1d1c1a;
+    --rd-line: #57534d;
+    --rd-gold: #f3a918;
+  }
+  .rd-top {
+    fill: color-mix(in srgb, var(--rd-gold) 9%, transparent);
+    stroke: var(--rd-gold);
+    stroke-width: 1.5;
+  }
+  .rd-box {
+    fill: var(--rd-soft);
+    stroke: var(--rd-line);
+    stroke-width: 1.25;
+  }
+  .rd-ink {
+    stroke: var(--rd-ink);
+    stroke-width: 1.5;
+  }
+  .rd-gold {
+    stroke: var(--rd-gold);
+    stroke-width: 1.5;
+  }
+  .rd-dash {
+    stroke-dasharray: 5 4;
+  }
+  .rd-dash-fine {
+    stroke-dasharray: 2 5;
+    stroke-linecap: round;
+    stroke-width: 2;
+  }
+  .rd-ink-fill {
+    fill: var(--rd-ink);
+  }
+  .rd-gold-fill {
+    fill: var(--rd-gold);
+  }
+  .rd-robot {
+    fill: none;
+    stroke: var(--rd-ink);
+    stroke-width: 1.5;
+  }
+  .rd-robot .rd-body {
+    fill: var(--rd-ink);
+  }
+  .rd-title {
+    font-family: var(--font-serif);
+    font-size: 21px;
+    font-weight: 600;
+    fill: var(--rd-ink);
+  }
+  .rd-sub,
+  .rd-small {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    fill: var(--rd-ink);
+    opacity: 0.85;
+  }
+  .rd-label {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 600;
+    fill: var(--rd-ink);
+  }
+  .rd-gold-text {
+    fill: var(--rd-gold);
+    opacity: 1;
+  }
+</style>

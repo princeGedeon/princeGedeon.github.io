@@ -2,8 +2,8 @@
   "name": "Prince Gédéon GUEDJE",
   "shortName": "Prince G. Guedje",
   "headline": {
-    "en": "M.Sc. in AI & Optimization · PhD applicant in Multi-Agent RL",
-    "fr": "Master IA & Optimisation · Candidat au doctorat en RL multi-agents"
+    "en": "M.Sc. in Computer Science (AI) · PhD applicant in multi-agent RL and robotics",
+    "fr": "Master Informatique (IA) · Candidat au doctorat en RL multi-agents et robotique"
   },
   "affiliation": {
     "en": "Université Clermont Auvergne",
@@ -19,8 +19,8 @@
     "domain": "gmail.com"
   },
   "seeking": {
-    "en": "I am looking for a PhD position in multi-agent / safe reinforcement learning and autonomous robotics, starting in early 2027.",
-    "fr": "Je recherche un doctorat en apprentissage par renforcement multi-agents / sûr et en robotique autonome, à partir de début 2027."
+    "en": "I am looking for a PhD position in multi-agent reinforcement learning and robotics, starting in 2027.",
+    "fr": "Je recherche un doctorat en apprentissage par renforcement multi-agents et en robotique, à partir de 2027."
   },
   "cv": {
     "en": "/cv/CV_Prince_Guedje_EN.pdf",
@@ -78,33 +78,66 @@
   ],
   "bio": {
     "en": [
-      "I recently completed an international <strong>Research Master’s (M2) in Artificial Intelligence & Optimization</strong>, fully taught in English, at <strong>Université Clermont Auvergne</strong>, France, as a <strong>MIAI Excellence Scholarship</strong> holder, after ranking <strong>1st in my Master 1</strong> class.",
-      "My research experience focuses on <strong>reinforcement learning for autonomous and multi-agent systems</strong>. My Master’s thesis focused on <strong>safe multi-agent reinforcement learning for cooperative UAV and ground-robot systems in 3D urban mapping</strong>. I also worked as an <strong>ML R&D intern at bioMérieux</strong>, developing multimodal document-parsing pipelines for clinical microbiology.",
-      "I am currently <strong>seeking a PhD position</strong> in these areas, starting in <strong>early 2027</strong>."
+      "I work on how teams of robots can learn to coordinate when each robot sees only part of the world, communication is limited and safety constraints must hold.",
+      "I recently completed the <strong>International Master in Computer Science</strong> (specialisation in AI, taught in English) at <strong>Université Clermont Auvergne</strong>, with the <strong>MIAI Excellence Scholarship</strong>. I ranked first in my Master 1 and in my Bachelor in Computer Engineering at IFRI, Benin. For my master’s thesis I built a decentralized multi-drone mapping system with multi-agent reinforcement learning, a graph attention communication layer and a two-level safety layer, from the simulation up to the training pipeline. I then spent six months as an ML R&D intern at <strong>bioMérieux</strong>.",
+      "I am looking for a <strong>PhD position starting in 2027</strong>."
     ],
     "fr": [
-      "Je viens de terminer un <strong>Master Recherche international (M2) en Intelligence Artificielle & Optimisation</strong>, entièrement enseigné en anglais, à l’<strong>Université Clermont Auvergne</strong>, en tant que <strong>boursier d’excellence MIAI</strong>, après avoir terminé <strong>major de promotion en Master 1</strong>.",
-      "Mon expérience de recherche porte sur l’<strong>apprentissage par renforcement pour les systèmes autonomes et multi-agents</strong>. Mon mémoire de Master portait sur l’<strong>apprentissage par renforcement multi-agents sûr pour des systèmes coopératifs drones / robots terrestres en cartographie urbaine 3D</strong>. J’ai également été <strong>stagiaire R&D en ML chez bioMérieux</strong>, où j’ai développé des pipelines multimodaux d’analyse de documents pour la microbiologie clinique.",
-      "Je suis actuellement <strong>à la recherche d’un doctorat</strong> dans ces domaines, avec un démarrage <strong>début 2027</strong>."
+      "Je m’intéresse à la façon dont des équipes de robots peuvent apprendre à se coordonner lorsque chaque robot ne voit qu’une partie du monde, que la communication est limitée et que des contraintes de sécurité doivent être respectées.",
+      "J’ai terminé le <strong>Master international en informatique</strong> (spécialité intelligence artificielle, enseigné en anglais) à l’<strong>Université Clermont Auvergne</strong>, avec la <strong>bourse d’excellence MIAI</strong>. J’ai été major de promotion en Master 1 et en Licence de génie informatique à l’IFRI, au Bénin. Pour mon mémoire, j’ai construit un système de cartographie multi-drones décentralisé avec apprentissage par renforcement multi-agents, une couche de communication par attention sur graphe et une couche de sécurité à deux niveaux, de la simulation jusqu’à la chaîne d’entraînement. J’ai ensuite passé six mois en R&D ML chez <strong>bioMérieux</strong>.",
+      "Je recherche un <strong>doctorat à partir de 2027</strong>."
     ]
+  },
+  "research": {
+    "heading": { "en": "Research direction", "fr": "Direction de recherche" },
+    "question": {
+      "en": "How can a team of heterogeneous robots learn to decide who does what and what to communicate, under partial observability and limited bandwidth, while every robot’s motion stays within its safety constraints?",
+      "fr": "Comment une équipe de robots hétérogènes peut-elle apprendre à décider qui fait quoi et quoi communiquer, sous observation partielle et bande passante limitée, tout en gardant le mouvement de chaque robot dans ses contraintes de sécurité ?"
+    },
+    "paragraphs": {
+      "en": [
+        "My thesis left me with two lessons. My drones were identical and shared one policy, while real missions need robots with different abilities. A drone covers a wide area quickly, while a ground robot is slower but can inspect places closely. And in narrow streets, several safety constraints became active at once and my safety filter had no admissible action left, so it could only react once a conflict was already there.",
+        "I would like to study this with two levels. Multi-agent reinforcement learning decides task allocation and communication, with the cost of each message in the objective. Underneath, each robot runs a model-based controller, such as model predictive control or a Control Barrier Function filter, which keeps explicit constraints in a layer that can be analysed formally. The lower level reports how close it is to infeasibility, so the team learns to avoid assignments that lead to conflicts.",
+        "I plan to train in a GPU-parallel simulator such as NVIDIA Isaac Lab, validate in Gazebo and ROS 2, and compare learned coordination with optimization-based allocation. Later, I would like to add constraints that cannot be written in advance, inferred from demonstrations with inverse constrained reinforcement learning."
+      ],
+      "fr": [
+        "Mon mémoire m’a laissé deux leçons. Mes drones étaient identiques et partageaient une seule politique, alors que les vraies missions demandent des robots aux capacités différentes. Un drone couvre vite une grande zone, tandis qu’un robot terrestre est plus lent mais peut inspecter de près. Et dans les rues étroites, plusieurs contraintes de sécurité devenaient actives en même temps et mon filtre de sécurité n’avait plus d’action admissible, il ne pouvait donc réagir qu’une fois le conflit déjà là.",
+        "Je voudrais étudier cela avec deux niveaux. L’apprentissage par renforcement multi-agents décide de la répartition des tâches et de la communication, avec le coût de chaque message dans l’objectif. En dessous, chaque robot suit un contrôleur fondé sur un modèle, comme la commande prédictive ou un filtre par fonctions barrières de contrôle, qui garde les contraintes explicites dans une couche analysable formellement. Le niveau bas indique à quel point il est proche de l’infaisabilité, pour que l’équipe apprenne à éviter les affectations qui mènent à des conflits.",
+        "Je compte entraîner dans un simulateur parallèle sur GPU comme NVIDIA Isaac Lab, valider dans Gazebo et ROS 2, et comparer la coordination apprise à l’allocation par optimisation. Plus tard, j’aimerais ajouter des contraintes impossibles à écrire à l’avance, inférées à partir de démonstrations par apprentissage par renforcement inverse sous contraintes."
+      ]
+    },
+    "diagram": {
+      "top": { "en": "Multi-agent RL coordination", "fr": "Coordination par RL multi-agents" },
+      "topSub": { "en": "who does what, what to share", "fr": "qui fait quoi, quoi partager" },
+      "down": { "en": "tasks", "fr": "tâches" },
+      "up": { "en": "feasibility", "fr": "faisabilité" },
+      "controller": { "en": "MPC / CBF", "fr": "MPC / CBF" },
+      "drone": { "en": "drone", "fr": "drone" },
+      "ground": { "en": "ground robot", "fr": "robot terrestre" },
+      "link": { "en": "limited communication", "fr": "communication limitée" },
+      "caption": {
+        "en": "Learning decides how the team coordinates. Model-based controllers keep each robot within its constraints and report back when a conflict is coming.",
+        "fr": "L’apprentissage décide de la coordination de l’équipe. Des contrôleurs fondés sur un modèle gardent chaque robot dans ses contraintes et signalent l’arrivée d’un conflit."
+      }
+    }
   },
   "pillars": [
     {
-      "en": "Multi-Agent & Safe RL",
-      "fr": "RL multi-agents & sûr"
+      "en": "Multi-agent RL",
+      "fr": "RL multi-agents"
     },
     {
-      "en": "Autonomous & Swarm Robotics",
-      "fr": "Robotique autonome & essaims"
+      "en": "Heterogeneous robot teams",
+      "fr": "Équipes de robots hétérogènes"
     },
     {
-      "en": "Multimodal Foundation Models",
-      "fr": "Modèles de fondation multimodaux"
+      "en": "Safe learning and control",
+      "fr": "Apprentissage et contrôle sûrs"
     }
   ],
   "researchInterests": [
     {
-      "en": "Multi-Agent Reinforcement Learning",
+      "en": "Multi-agent reinforcement learning",
       "fr": "Apprentissage par renforcement multi-agents",
       "children": [
         {
@@ -112,55 +145,45 @@
           "fr": "Coordination décentralisée (Dec-POMDP, CTDE)"
         },
         {
-          "en": "Cooperative AI",
-          "fr": "IA coopérative"
+          "en": "Task allocation and learned communication",
+          "fr": "Allocation de tâches et communication apprise"
         }
       ]
     },
     {
-      "en": "Safe Reinforcement Learning",
-      "fr": "Apprentissage par renforcement sûr",
+      "en": "Safe learning and control",
+      "fr": "Apprentissage et contrôle sûrs",
       "children": [
         {
-          "en": "Constrained policy optimization (Lagrangian relaxation)",
-          "fr": "Optimisation de politiques sous contraintes (relaxation lagrangienne)"
+          "en": "Constrained policy optimization",
+          "fr": "Optimisation de politiques sous contraintes"
         },
         {
-          "en": "Control Barrier Functions",
-          "fr": "Control Barrier Functions"
+          "en": "Control Barrier Functions and MPC",
+          "fr": "Fonctions barrières de contrôle et commande prédictive"
+        },
+        {
+          "en": "Inverse constrained RL",
+          "fr": "RL inverse sous contraintes"
         }
       ]
     },
     {
-      "en": "Autonomous Robotics",
-      "fr": "Robotique autonome",
+      "en": "Multi-robot autonomy",
+      "fr": "Autonomie multi-robots",
       "children": [
         {
-          "en": "Multi-UAV exploration & 3D mapping",
-          "fr": "Exploration multi-drones & cartographie 3D"
+          "en": "Heterogeneous aerial and ground teams",
+          "fr": "Équipes aériennes et terrestres hétérogènes"
         },
         {
-          "en": "Human-aware navigation",
-          "fr": "Navigation tenant compte de l'humain"
+          "en": "Exploration and collaborative mapping",
+          "fr": "Exploration et cartographie collaborative"
         }
       ]
     },
     {
-      "en": "Multimodal Foundation Models",
-      "fr": "Modèles de fondation multimodaux",
-      "children": [
-        {
-          "en": "VLM-based document understanding",
-          "fr": "Compréhension de documents par VLM"
-        },
-        {
-          "en": "Vision-Language-Action models",
-          "fr": "Modèles vision-langage-action"
-        }
-      ]
-    },
-    {
-      "en": "Computer Vision",
+      "en": "Computer vision",
       "fr": "Vision par ordinateur"
     }
   ],
@@ -168,20 +191,20 @@
     {
       "period": "Sep 2025 – Aug 2026",
       "degree": {
-        "en": "Research Master 2 in International Computer Science — AI & Optimization (fully taught in English)",
-        "fr": "Master 2 Recherche Informatique internationale — IA & Optimisation (entièrement en anglais)"
+        "en": "International Master in Computer Science (Master 2), specialisation in AI, taught in English",
+        "fr": "Master international en informatique (Master 2), spécialité intelligence artificielle, enseigné en anglais"
       },
       "institution": "Université Clermont Auvergne, France",
       "details": {
         "en": [
-          "Thesis: <em>Multi-Agent Reinforcement Learning for 3D Urban Environment Mapping under Energy and Communication Constraints</em> ? <a href=\"/papers/master-thesis-guedje-2026.pdf\" target=\"_blank\" rel=\"noopener\">PDF</a>",
+          "Thesis: <em>Multi-Agent Reinforcement Learning for 3D Urban Environment Mapping under Energy and Communication Constraints</em>, supervised by Dr. Viet Hung Nguyen (LIMOS). <a href=\"/projects/#marl-uav-mapping\">Project page</a>",
           "MIAI Excellence Scholarship",
-          "Courses: Reinforcement Learning, Robotics Perception, Multi-Agent Systems, Stochastic Optimization, Autonomous Systems, Complexity"
+          "Courses: Reinforcement Learning, Multi-Agent Systems, Optimization, Stochastic Optimization, Autonomous Systems"
         ],
         "fr": [
-          "Mémoire : <em>Apprentissage par renforcement multi-agents pour la cartographie 3D d'environnements urbains sous contraintes d'énergie et de communication</em> ? <a href=\"/papers/master-thesis-guedje-2026.pdf\" target=\"_blank\" rel=\"noopener\">PDF</a>",
-          "Bourse d'excellence MIAI",
-          "Cours : apprentissage par renforcement, perception robotique, systèmes multi-agents, optimisation stochastique, systèmes autonomes, complexité"
+          "Mémoire : <em>Apprentissage par renforcement multi-agents pour la cartographie 3D d’environnements urbains sous contraintes d’énergie et de communication</em>, encadré par Dr Viet Hung Nguyen (LIMOS). <a href=\"/fr/projects/#marl-uav-mapping\">Page du projet</a>",
+          "Bourse d’excellence MIAI",
+          "Cours : apprentissage par renforcement, systèmes multi-agents, optimisation, optimisation stochastique, systèmes autonomes"
         ]
       }
     },
@@ -325,8 +348,10 @@
       "multi-agent reinforcement learning",
       "safe reinforcement learning",
       "MARL",
-      "robotics",
-      "UAV swarm",
+      "multi-robot systems",
+      "heterogeneous robot teams",
+      "UAV",
+      "control barrier functions",
       "autonomous systems",
       "AI researcher",
       "PhD candidate",
@@ -341,8 +366,8 @@
   "homeLayout": "sidebar",
   "pro": {
     "terminal": {
-      "en": "training agents… multi-agent RL · safe RL · robotics|coordinating UAV swarms under constraints|seeking a PhD — early 2027",
-      "fr": "entraînement des agents… RL multi-agents · RL sûr · robotique|coordination d’essaims de drones sous contraintes|recherche un doctorat — début 2027"
+      "en": "training agents… multi-agent RL · safe control · robotics|coordinating heterogeneous robot teams under constraints|seeking a PhD, 2027",
+      "fr": "entraînement des agents… RL multi-agents · contrôle sûr · robotique|coordination d’équipes de robots hétérogènes sous contraintes|recherche un doctorat, 2027"
     }
   }
 }

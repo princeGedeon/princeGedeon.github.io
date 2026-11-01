@@ -63,6 +63,25 @@ const profileSchema = z.object({
   showReferences: z.boolean().default(false),
   /** Experimental ?pro=1 / ?pro=2 looks: phrases for the typewriter line, separated by "|". */
   pro: z.object({ terminal: L }).default({ terminal: { en: '', fr: '' } }),
+  /** Research statement shown on the home page: central question, short paragraphs and diagram labels. */
+  research: z
+    .object({
+      heading: L,
+      question: L,
+      paragraphs: LList,
+      diagram: z.object({
+        top: L,
+        topSub: L,
+        down: L,
+        up: L,
+        controller: L,
+        drone: L,
+        ground: L,
+        link: L,
+        caption: L,
+      }),
+    })
+    .optional(),
   /** Home layout: 'sidebar' (classic, photo on the side) or 'hero' (large photo on top). Preview the other with ?dev=1. */
   homeLayout: z.enum(['sidebar', 'hero']).default('sidebar'),
   seo: z

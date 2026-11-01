@@ -1,9 +1,10 @@
 ---
 import PublicationItem from '../components/PublicationItem.astro';
+import ResearchDiagram from '../components/ResearchDiagram.astro';
 import SocialIcons from '../components/SocialIcons.astro';
 import GradIcon from '~icons/fa-solid/graduation-cap';
 import PinIcon from '~icons/fa-solid/map-marker-alt';
-import { news, profile } from '../data';
+import { news, profile, projects } from '../data';
 import type { Lang } from '../i18n/ui';
 import { asset, available, formatMonth, localizePath, useTranslations } from '../i18n/utils';
 import Base from '../layouts/Base.astro';
@@ -17,6 +18,8 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const selected = publications.filter((p) => p.selected);
 const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
+const research = profile.research;
+const thesis = projects.find((p) => p.featured);
 ---
 
 <Base lang={lang} path="/" switchable>
@@ -70,6 +73,50 @@ const cvs = (['en', 'fr'] as const).filter((l) => available(profile.cv[l]));
       {profile.pillars.map((p) => <li class="tag">{p[lang]}</li>)}
     </ul>
   </section>
+
+  {
+    research && (
+      <section class="mt-10" aria-labelledby="research-heading">
+        <h2 id="research-heading" class="section-title">
+          {research.heading[lang]}
+        </h2>
+        <blockquote class="research-question">{research.question[lang]}</blockquote>
+        <div class="mt-6">
+          <ResearchDiagram labels={research.diagram} lang={lang} />
+        </div>
+        <div class="prose-tight mt-6">
+          {research.paragraphs[lang].map((para) => (
+            <p set:html={para} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  {
+    thesis && (
+      <section class="mt-10">
+        <h2 class="section-title">{t('home.featured')}</h2>
+        <a href={localizePath(`/projects/#${thesis.id}`, lang)} class="featured-card">
+          {available(thesis.figure) && (
+            <img
+              src={asset(thesis.figure)}
+              alt={thesis.title[lang]}
+              loading="lazy"
+              width="797"
+              height="236"
+              class="w-full rounded-md border border-stone-200 dark:border-slate-700"
+            />
+          )}
+          <p class="mt-3 font-serif text-lg leading-snug font-semibold text-stone-900 dark:text-slate-100">
+            {thesis.title[lang]}
+          </p>
+          <p class="meta mt-0.5">{thesis.context[lang]}</p>
+          <p class="mt-2 text-stone-700 dark:text-slate-300">{thesis.summary[lang]}</p>
+        </a>
+      </section>
+    )
+  }
 
   <section class="mt-10">
     <h2 class="section-title">{t('home.interests')}</h2>

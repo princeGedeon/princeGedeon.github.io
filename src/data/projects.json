@@ -2,47 +2,51 @@
   {
     "id": "marl-uav-mapping",
     "featured": true,
-    "period": "Sep 2025 – Aug 2026",
+    "period": "Sep 2025 – Mar 2026",
     "title": {
-      "en": "Safe Multi-Agent RL for Multi-UAV 3D Urban Mapping",
-      "fr": "RL multi-agents sûr pour la cartographie 3D urbaine multi-drones"
+      "en": "Multi-agent RL for multi-drone 3D urban mapping under constraints",
+      "fr": "RL multi-agents pour la cartographie urbaine 3D par plusieurs drones sous contraintes"
     },
     "context": {
       "en": "Master’s thesis · Université Clermont Auvergne · supervised by Dr. Viet Hung Nguyen",
       "fr": "Mémoire de Master · Université Clermont Auvergne · encadré par Dr Viet Hung Nguyen"
     },
     "summary": {
-      "en": "Decentralized coverage path planning for a UAV swarm mapping a 3D urban environment, formulated as a Dec-POMDP under energy, communication and no-fly-zone constraints.",
-      "fr": "Planification décentralisée de couverture pour un essaim de drones cartographiant un environnement urbain 3D, formulée comme un Dec-POMDP sous contraintes d'énergie, de communication et de zones interdites."
+      "en": "Many places still have no complete postal address system, and mapping them with aerial campaigns is expensive. I asked whether a team of drones could do this mapping on its own, and modelled the mission for three drones as a constrained Dec-POMDP under energy, storage, altitude, collision and no-fly-zone constraints.",
+      "fr": "Beaucoup de régions n’ont pas encore de système d’adresses postales complet, et les cartographier par campagnes aériennes coûte cher. Je me suis demandé si une équipe de drones pouvait faire cette cartographie seule, et j’ai modélisé la mission de trois drones comme un Dec-POMDP sous contraintes d’énergie, de stockage, d’altitude, de collision et de zones interdites."
     },
     "highlights": {
       "en": [
-        "Lagrangian MAPPO (CTDE) to trade off coverage against energy and safety budgets.",
-        "Control Barrier Functions as a safety layer for collision and no-fly-zone avoidance.",
-        "Probabilistic 3D occupancy mapping (OctoMap) inside a ROS 2 / Gazebo simulation stack.",
-        "End-to-end prototype: continuous occupancy mapping and live 3D visualization of the swarm."
+        "Wrote the multi-agent environment and its PettingZoo wrapper, connected to Gazebo through ROS 2.",
+        "Developed the custom MAPPO models in Ray RLlib, where each drone aggregates its neighbours’ states with a graph attention layer.",
+        "Built a two-level safety layer: Lagrangian penalties for battery and storage, and a Control Barrier Function filter for collisions, altitude and no-fly zones.",
+        "Integrated multi-robot graph SLAM so the drones merge their local maps into one. The pipeline runs end to end at about 0.8× real time with a 20 Hz control loop.",
+        "Training did not converge within the project. The work exposed a concrete problem I want to study next: in narrow streets, several safety constraints become active at once and the filter has no admissible action left."
       ],
       "fr": [
-        "MAPPO lagrangien (CTDE) pour arbitrer entre couverture et budgets d'énergie et de sécurité.",
-        "Control Barrier Functions comme couche de sécurité (collisions, zones interdites).",
-        "Cartographie 3D probabiliste (OctoMap) dans un environnement de simulation ROS 2 / Gazebo.",
-        "Prototype de bout en bout : cartographie d’occupation continue et visualisation 3D en direct de l’essaim."
+        "Écriture de l’environnement multi-agents et de son wrapper PettingZoo, relié à Gazebo par ROS 2.",
+        "Développement des modèles MAPPO dans Ray RLlib, où chaque drone agrège l’état de ses voisins par une couche d’attention sur graphe.",
+        "Couche de sécurité à deux niveaux : pénalités lagrangiennes pour la batterie et le stockage, filtre par fonctions barrières de contrôle pour les collisions, l’altitude et les zones interdites.",
+        "Intégration d’un SLAM multi-robots pour fusionner les cartes locales. La chaîne tourne de bout en bout à environ 0,8× le temps réel avec une boucle de contrôle à 20 Hz.",
+        "L’entraînement n’a pas convergé pendant le projet. Le travail a fait apparaître un problème concret que je veux étudier : dans les rues étroites, plusieurs contraintes de sécurité deviennent actives en même temps et le filtre n’a plus d’action admissible."
       ]
     },
     "tags": [
+      "MARL",
       "MAPPO",
+      "Dec-POMDP",
+      "Graph attention",
       "Safe RL",
       "CBF",
-      "Dec-POMDP",
       "ROS 2",
       "Gazebo",
-      "OctoMap",
-      "PyTorch",
-      "Python"
+      "PettingZoo",
+      "Ray RLlib",
+      "PyTorch"
     ],
     "repo": "",
-    "pdf": "/papers/master-thesis-guedje-2026.pdf",
-    "figure": "/projects/marl-uav-mapping.png",
+    "pdf": "/papers/thesis-summary-guedje-2026.pdf",
+    "figure": "/projects/marl-uav-city.png",
     "video": ""
   },
   {
@@ -118,7 +122,7 @@
       "Python"
     ],
     "repo": "",
-    "paper": "guedje2024nextvision",
+    "paper": "houndji2024nextvision",
     "figure": "",
     "video": ""
   },
